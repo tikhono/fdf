@@ -6,7 +6,7 @@
 #    By: atikhono <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/25 20:12:02 by atikhono          #+#    #+#              #
-#    Updated: 2017/11/16 20:50:48 by atikhono         ###   ########.fr        #
+#    Updated: 2018/03/10 13:41:26 by atikhono         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,17 +65,12 @@ SRC =	ft_memset.c\
 		ft_putstr_fd.c\
 		ft_putendl_fd.c\
 		ft_putnbr_fd.c\
-		ft_lstnew.c\
-		ft_lstdel.c\
-		ft_lstdelone.c\
-		ft_lstadd.c\
-		ft_lstiter.c\
-		ft_lstmap.c\
 		ft_itoa_base.c\
 		ft_reverse.c\
 		ft_find_digit.c\
 		ft_root.c\
-		ft_power.c
+		ft_power.c\
+		get_next_line.c
 
 OBJ = 	$(SRC:.c=.o)
 
