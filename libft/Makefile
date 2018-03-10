@@ -6,7 +6,7 @@
 #    By: atikhono <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/25 20:12:02 by atikhono          #+#    #+#              #
-#    Updated: 2018/03/10 13:41:26 by atikhono         ###   ########.fr        #
+#    Updated: 2018/03/10 14:22:21 by atikhono         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC =	ft_memset.c\
 		ft_memcmp.c\
 		ft_strlen.c\
 		ft_strdup.c\
+		ft_strndup.c\
 		ft_strcpy.c\
 		ft_strncpy.c\
 		ft_strcat.c\
