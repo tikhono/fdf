@@ -1,5 +1,6 @@
 .*
 *.o
 *.out
-Cmake*
-cmake*
+CM*
+Cm*
+cm*
