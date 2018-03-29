@@ -6,7 +6,7 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 15:56:24 by atikhono          #+#    #+#             */
-/*   Updated: 2018/03/29 19:45:43 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/03/29 19:47:35 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ int		main(int ac, char **av)
 	*mlx = mlx_init();
 	while (ac > 1)
 	{
+		if (fork() != 0)
+			--ac;
+		else
+			brak;
 		if (parse(av[ac]))
 		{
 		*win = mlx_new_window(mlx, 1200, 600, "Ya okoshko");
@@ -31,7 +35,6 @@ int		main(int ac, char **av)
 		}
 		else
 			ft_putstr("Invalid");
-		--ac;
 	}
 	return (0);
 }
