@@ -6,7 +6,7 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 17:57:48 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/01 15:53:27 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/04/01 16:05:44 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		number_of_rows(int fd)
 	res = 0;
 	end = read(256, line);
 	if (end != -1)
-		end 
+	line[end]= '\0';
 	while ()
 
 	return (res);
