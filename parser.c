@@ -6,13 +6,16 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 17:57:48 by atikhono          #+#    #+#             */
-/*   Updated: 2018/03/29 17:58:59 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/04/01 12:28:43 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft/libft.h"
 
 int		parse(char *file)
 {
 
+	get_next_line();	
 
 
 
