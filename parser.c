@@ -6,7 +6,7 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 17:57:48 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/01 16:05:44 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/04/01 17:52:05 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,16 @@ int		number_of_rows(int fd)
 	char	*line;
 
 	res = 0;
-	end = read(256, line);
-	if (end != -1)
-	line[end]= '\0';
-	while ()
-
+	end = 1;
+	while (end != 0)
+	{
+		line = (char *)malloc(sizeof(char *) * 256);
+		end = read(fd, line, 256);
+		if (end == -1)
+			return (-1);
+		line[end]= '\0';
+		res += ft_count_chars(line, "\n");
+	}
 	return (res);
 }
 
@@ -47,3 +52,4 @@ int		parse(char *file)
 
 
 	return (1);
+}
