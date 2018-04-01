@@ -6,7 +6,7 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 17:57:48 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/01 19:46:45 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/04/01 20:42:06 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,29 +34,39 @@ int		number_of_rows(int fd)
 	return (res);
 }
 
+int		fill(char **arr)
+{
+	int		i;
+	int		j
+
+	while (get_next_line(fd, &line))
+	{
+		buf = ft_split(line, ' ');
+		while (arr[i] != NULL)
+		{
+		//arr[i][j] = (struct)malloc(sizeof(struct));
+		//	copy in arr from buf
+			++i;
+		}
+	}
+	return (1);
+}
+
 int		parse(char *file)
 {
 	int		fd;
 	int		rows;
-	char	*line;
 	char 	**arr;
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (0);
 	rows = number_of_rows(fd);
-	if (rows < 0)
+	if (rows <= 0)
 		return (0);
 	arr = (char **)malloc(sizeof(char **) * rows + 1);
-	while (get_next_line(fd, &line))
-	{
-		//split line on pixels (by spaces)
-		//malloc space on one row of pixels (structures)
-		//while (row)
-		//{
-		//	fill defined structure
-		//	go to next structure
-		//}
-	}
-	return (1);
+	arr[rows] = NULL;
+	if (fill(arr))
+		return (1);
+	return (0);
 }
