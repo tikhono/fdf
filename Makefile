@@ -16,17 +16,23 @@ LIBNAME = libft.a
 
 OBJ = $(SRC:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wfatal-errors
 
-SRC = main.c \
-	  parser.c
+MLX = -lmlx -framework AppKit -framework OpenGL  
+
+#-Wall -Wextra -Werror
+
+SRC =	main.c \
+		line.c\
+		part.c
+
 
 all: liball $(NAME)
 
 obj: $(OBJ)
 
 $(NAME) : $(LIBNAME) $(OBJ)
-		gcc -O3 $(FLAGS) $^ -o $(NAME) -lmlx -framework AppKit -framework OpenGL
+		gcc -O3 $(FLAGS) $^ -o $(NAME) $(MLX)
 
 %.o: %.c
 		gcc $(FLAGS) -o $@ -c $<
@@ -42,12 +48,12 @@ re: fclean all
 $(LIBNAME): liball
 
 liball:
-	@make -C libft/ all
+	@make -C ./libft all
 
 libclean:
-	@make -C libft/ clean
+	@make -C ./libft clean
 
 libfclean:
-	@make -C libft/ fclean
+	@make -C ./libft fclean
 
 libre: libfclean liball
