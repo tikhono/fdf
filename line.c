@@ -6,7 +6,7 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 16:34:05 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/05 18:29:41 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/04/05 19:41:50 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@
 #include "line.h"
 #include "part.h"
 
-void	swap(double *a, double *b)
+void	swap(int *a, int *b)
 {
-	double	x;
+	int	x;
 
 	x = *a;
 	*a = *b;
 	*b = x;
 }
 
-void	compare(double *x0, double *y0, double *x1, double *y1)
+void	compare(int *x0, int *y0, int *x1, int *y1)
 {
-	if (fabs(*y1 - *y0) > fabs(*x1 - *x0))
+	if (labs(*y1 - *y0) > labs(*x1 - *x0))
 	{
 		swap(x0, y0);
 		swap(x1, y1);
@@ -39,7 +39,7 @@ void	compare(double *x0, double *y0, double *x1, double *y1)
 	}
 }
 
-void	put_pixel(double x, double y, double c, void *mlx, void *win)
+void	put_pixel(int x, int y, double c, void *mlx, void *win)
 {
 	int		alpha;
 	int		argb;
@@ -53,11 +53,11 @@ void	put_pixel(double x, double y, double c, void *mlx, void *win)
 	mlx_pixel_put(mlx, win, x, y, argb);
 }
 
-void	draw_line(double x0, double y0, double x1, double y1, void *mlx, void *win)
+void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
 {
-	double	i;
-	double	dx;
-	double	dy;
+	int		i;
+	int		dx;
+	int		dy;
 	double	grad;
 	double	intery;
 
@@ -68,28 +68,32 @@ void	draw_line(double x0, double y0, double x1, double y1, void *mlx, void *win)
 	if (dx == 0.0)
 		grad = 1.0;
 	intery = y0;
-	if (fabs(y1 - y0) > fabs(x1 - x0))
+	if (labs(y1 - y0) > labs(x1 - x0))
 	{
 		i = x0;
-		while (i <= x1)
+		while (i < x1)
 		{
-			put_pixel(ipart(intery) + 1.0, i, rfpart(intery), mlx, win);
-			put_pixel(ipart(intery) - 1.0, i, rfpart(intery), mlx, win);
+		//	put_pixel(ipart(intery) + 2, i, rfpart(intery), mlx, win);
+		//	put_pixel(ipart(intery) + 1, i, rfpart(intery), mlx, win);
 			put_pixel(ipart(intery), i, fpart(intery), mlx, win);
+			put_pixel(ipart(intery) - 1, i, rfpart(intery), mlx, win);
+		//	put_pixel(ipart(intery) - 2, i, rfpart(intery), mlx, win);
 			intery = intery + grad;
-			i += 1.0;
+			++i;
 		}
 	}
 	else
 	{
 		i = x0;
-		while (i <= x1)
+		while (i < x1)
 		{
-			put_pixel(i, ipart(intery) + 1.0, rfpart(intery), mlx, win);
-			put_pixel(i, ipart(intery) - 1.0, rfpart(intery), mlx, win);
+		//	put_pixel(i, ipart(intery) + 2, rfpart(intery), mlx, win);
+		//	put_pixel(i, ipart(intery) + 1, rfpart(intery), mlx, win);
 			put_pixel(i, ipart(intery), fpart(intery), mlx, win);
+			put_pixel(i, ipart(intery) - 1, rfpart(intery), mlx, win);
+		//	put_pixel(i, ipart(intery) - 2, rfpart(intery), mlx, win);
 			intery = intery + grad;
-			i += 1.0;
+			++i;
 		}
 	}
 }

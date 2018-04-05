@@ -6,7 +6,7 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 15:56:24 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/05 18:13:24 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/04/05 21:30:53 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,16 @@ int		main(int ac, char **av)
 		mlx_pixel_put(mlx, win, 20, 100, 0xBFFF0000);
 		mlx_pixel_put(mlx, win, 10, 100, 0xD9FF0000); //dark
 
-		draw_line(100, 100, 700, 300, mlx, win);
-		draw_line(200, 200, 700, 300, mlx, win);
+		draw_line(100, 100, 200, 200, mlx, win);
+		draw_line(100, 150, 500, 252, mlx, win);
+		//draw_line(100, 200, 500, 302, mlx, win);
+		//draw_line(100, 250, 500, 452, mlx, win);
+		//draw_line(100, 300, 500, 402, mlx, win);
+		//draw_line(100, 350, 500, 452, mlx, win);
+		//draw_line(100, 400, 500, 502, mlx, win);
+		//draw_line(100, 450, 500, 552, mlx, win);
+		//draw_line(100, 500, 500, 602, mlx, win);
+		//draw_line(100, 550, 500, 652, mlx, win);
 	///call_hookers;
 		mlx_loop(mlx);
 	}

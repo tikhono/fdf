@@ -6,10 +6,10 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 16:34:43 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/04 20:57:54 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/04/05 18:53:29 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #define FACTOR 3.9015625
 
-void	draw_line(double x0, double y0, double x1, double y1, void *mlx, void *win);
+void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win);

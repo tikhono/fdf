@@ -6,13 +6,13 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 16:42:47 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/04 16:45:59 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/04/05 19:56:18 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-double	ipart(double x);
+int		ipart(double x);
 
-double	round(double x);
+int		rpart(double x);
 
 double	fpart(double x);
 
