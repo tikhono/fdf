@@ -6,12 +6,13 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 17:57:48 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/01 20:42:06 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/04/07 16:17:43 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <unistd.h>
+#include "parser.h"
 #include "libft/libft.h"
 
 int		number_of_rows(int fd)
@@ -34,29 +35,43 @@ int		number_of_rows(int fd)
 	return (res);
 }
 
-int		fill(char **arr)
+t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 {
-	int		i;
-	int		j
+	char	*line;
+	char	**temp;
+	char	**buf;
 
 	while (get_next_line(fd, &line))
 	{
-		buf = ft_split(line, ' ');
-		while (arr[i] != NULL)
+		buf = ft_strsplit(line, ' ');
+		free(line);
+		j = 0;
+		arr[i] = (t_pix **)malloc(sizeof(t_pix **) * ft_strlen(buf[j]) + 1);
+		while (buf[j] != NULL)
 		{
-		//arr[i][j] = (struct)malloc(sizeof(struct));
-		//	copy in arr from buf
-			++i;
+			temp = ft_strsplit(buf[j], ',');
+			arr[i][j] = (t_pix *)malloc(sizeof(t_pix *));
+			arr[i][j]->oz = ft_atoi(temp[0]);
+			if (temp[1])
+				arr[i][j]->color = 0x00000000 + ft_atoi(temp[1]);
+				if (temp[2])
+					return (NULL);//write free function
+			else
+				arr[i][j]->color = 0x00FFFFFF;
+			++j;
 		}
+		arr[i][j] = NULL;
+		free(buf);
+		++i;
 	}
-	return (1);
+	return (arr);
 }
 
-int		parse(char *file)
+t_pix	***parse(char *file)
 {
 	int		fd;
 	int		rows;
-	char 	**arr;
+	t_pix 	***arr;
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
@@ -64,9 +79,7 @@ int		parse(char *file)
 	rows = number_of_rows(fd);
 	if (rows <= 0)
 		return (0);
-	arr = (char **)malloc(sizeof(char **) * rows + 1);
+	arr = (t_pix ***)malloc(sizeof(t_pix **) * (rows + 1));
 	arr[rows] = NULL;
-	if (fill(arr))
-		return (1);
-	return (0);
+	return (fill(arr, fd, 0, 0));
 }
