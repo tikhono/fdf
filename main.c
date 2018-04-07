@@ -6,7 +6,7 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 15:56:24 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/07 18:34:41 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/04/07 21:08:29 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int		main(int ac, char **av)
 	arr = parse(av[ac]);
 	if (arr)
 	{
+		printf("here!\n");
 	////mlx = mlx_init();
 	////win = mlx_new_window(mlx, 1200, 600, ft_itoa(ac));
 	//	mlx_pixel_put(mlx, win, 100, 100, 0x00FF0000); //bright

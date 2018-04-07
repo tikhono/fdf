@@ -6,7 +6,7 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 17:57:48 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/07 20:20:54 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/04/07 21:13:24 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include "parser.h"
 #include "libft/libft.h"
+#include <printf.h>
 
 int		number_of_rows(int fd)
 {
@@ -41,14 +42,16 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 	char	*line;
 	char	**temp;
 	char	**buf;
-
+	
 	arr = NULL;	
 	while (get_next_line(fd, &line))
 	{
 		buf = ft_strsplit(line, ' ');
+		printf("here!\n");
 		free(line);
 		j = 0;
-		arr[i] = (t_pix **)malloc(sizeof(t_pix *) * (ft_strlen(buf[j]) + 1));
+		arr[i] = (t_pix **)malloc(sizeof(t_pix *) * (ft_strlen(buf) + 1));//fix this shit mathafaka
+		printf("here!\n");
 		while (buf[j] != NULL)
 		{
 			temp = ft_strsplit(buf[j], ',');
