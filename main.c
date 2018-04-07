@@ -6,11 +6,11 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 15:56:24 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/07 16:38:00 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/04/07 18:34:41 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <mlx.h>
+#include <mlx.h>
 #include <unistd.h>
 #include "parser.h"
 #include "line.h"
