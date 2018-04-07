@@ -6,11 +6,11 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 15:56:24 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/07 16:30:48 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/04/07 16:38:00 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+//#include <mlx.h>
 #include <unistd.h>
 #include "parser.h"
 #include "line.h"
@@ -33,13 +33,11 @@ int		main(int ac, char **av)
 		else
 			break ;
 	--ac;
-	printf("there!\n");
 	arr = parse(av[ac]);
-	printf("there!\n");
 	if (arr)
 	{
-		mlx = mlx_init();
-		win = mlx_new_window(mlx, 1200, 600, ft_itoa(ac));
+	////mlx = mlx_init();
+	////win = mlx_new_window(mlx, 1200, 600, ft_itoa(ac));
 	//	mlx_pixel_put(mlx, win, 100, 100, 0x00FF0000); //bright
 	//	mlx_pixel_put(mlx, win, 90, 100, 0x1AFF0000);
 	//	mlx_pixel_put(mlx, win, 80, 100, 0x33FF0000);
@@ -53,20 +51,21 @@ int		main(int ac, char **av)
     //
 	//	draw_line(100, 100, 200, 200, mlx, win);
 	//	draw_line(100, 150, 500, 252, mlx, win);
-		//draw_line(100, 200, 500, 302, mlx, win);
-		//draw_line(100, 250, 500, 452, mlx, win);
-		//draw_line(100, 300, 500, 402, mlx, win);
-		//draw_line(100, 350, 500, 452, mlx, win);
-		//draw_line(100, 400, 500, 502, mlx, win);
-		//draw_line(100, 450, 500, 552, mlx, win);
-		//draw_line(100, 500, 500, 602, mlx, win);
-		//draw_line(100, 550, 500, 652, mlx, win);
-	///call_hookers;
+	//	draw_line(100, 200, 500, 302, mlx, win);
+	//	draw_line(100, 250, 500, 452, mlx, win);
+	//	draw_line(100, 300, 500, 402, mlx, win);
+	//	draw_line(100, 350, 500, 452, mlx, win);
+	//	draw_line(100, 400, 500, 502, mlx, win);
+	//	draw_line(100, 450, 500, 552, mlx, win);
+	//	draw_line(100, 500, 500, 602, mlx, win);
+	//	draw_line(100, 550, 500, 652, mlx, win);
+	////call_hookers;
 		i = 0;
-		while (arr[i])
+		while (arr[i] != NULL)
 		{
 			printf("here!\n");
-			while (arr[i][j])
+			j = 0;
+			while (arr[i][j] != NULL)
 			{
 				printf("%i  ", arr[i][j]->oz);
 				++j;
@@ -76,7 +75,7 @@ int		main(int ac, char **av)
 		}
 
 		printf("there!\n");
-		mlx_loop(mlx);
+	////mlx_loop(mlx);
 	}
 	else
 		ft_putstr("Invalid map");

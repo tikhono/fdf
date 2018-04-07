@@ -6,18 +6,19 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 17:57:48 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/07 16:17:43 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/04/07 17:16:36 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <unistd.h>
 #include "parser.h"
+#include <printf.h>
 #include "libft/libft.h"
 
 int		number_of_rows(int fd)
 {
-	int		end;
+	ssize_t	end;
 	int		res;
 	char	*line;
 
@@ -43,19 +44,23 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 
 	while (get_next_line(fd, &line))
 	{
+		printf("\n\n\n\nssdf\n\n");
 		buf = ft_strsplit(line, ' ');
 		free(line);
 		j = 0;
-		arr[i] = (t_pix **)malloc(sizeof(t_pix **) * ft_strlen(buf[j]) + 1);
+		arr[i] = (t_pix **)malloc(sizeof(t_pix *) * (ft_strlen(buf[j]) + 1));
 		while (buf[j] != NULL)
 		{
 			temp = ft_strsplit(buf[j], ',');
-			arr[i][j] = (t_pix *)malloc(sizeof(t_pix *));
+			arr[i][j] = (t_pix *)malloc(sizeof(t_pix));
 			arr[i][j]->oz = ft_atoi(temp[0]);
+			printf("\n\n%i\n\n", arr[i][j]->oz);
 			if (temp[1])
+			{
 				arr[i][j]->color = 0x00000000 + ft_atoi(temp[1]);
 				if (temp[2])
 					return (NULL);//write free function
+			}
 			else
 				arr[i][j]->color = 0x00FFFFFF;
 			++j;
