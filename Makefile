@@ -6,13 +6,13 @@
 #    By: atikhono <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/01 17:15:51 by atikhono          #+#    #+#              #
-#    Updated: 2018/04/05 17:24:08 by atikhono         ###   ########.fr        #
+#    Updated: 2018/04/07 10:29:27 by atikhono         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
-LIBNAME = libft.a
+LIBNAME = ./libft/libft.a
 
 OBJ = $(SRC:.c=.o)
 
