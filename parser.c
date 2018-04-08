@@ -36,42 +36,6 @@ int		number_of_rows(int fd)
 	return (res);
 }
 
-int 	num_of_col(char **buff)//put this function in libft
-{
-	int 	res;
-
-	res = 0;
-	while (buff[res])
-		res++;
-	return (res);
-}
-
-int 	ft_is_num(char *num, int base)//put this function in libft)
-{
-	char 	*c;
-
-	if (num)
-	{
-		c = num;
-		if ((*c == '-' || *c == '+') && base == 10)
-			++c;
-		if ((*c == '0') && base == 16)
-		{
-			++c;
-			if (*c == 'x')
-				++c;
-		}
-		while (*c != '\0')
-		{
-			if (!ft_isdigit(*c) && !((base == 16) && (*c >= 'A' && *c <= 'F')))
-				return (0);
-			++c;
-		}
-		return (1);
-	}
-	return (0);
-}
-
 t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 {
 	char	*line;
@@ -83,19 +47,19 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 		buf = ft_strsplit(line, ' ');
 		free(line);
 		j = 0;
-		arr[i] = (t_pix **)malloc(sizeof(t_pix *) * (num_of_col(buf) + 1));
-		while (buf[j] != NULL)
+		arr[i] = (t_pix **)malloc(sizeof(t_pix *) * (ft_num_of_rows(buf) + 1));
+		while (buf[j] != NULL)//cutout this loop into another function. i, j, arr, temp
 		{
 			temp = ft_strsplit(buf[j], ',');
-			if (num_of_col(temp) <= 2)
+			if (ft_num_of_rows(temp) <= 2)
 			{
-				if (!ft_is_num(temp[0],10))
+				if (!ft_isnum(temp[0],10))
 					return (NULL);//return NULL from return of free function
 				arr[i][j] = (t_pix *)malloc(sizeof(t_pix));
 				arr[i][j]->oz = ft_atoi(temp[0]);
 				if (temp[1])
 				{
-					if ((!ft_is_num(temp[1], 16)) && temp[1][0] != '\0')
+					if ((!ft_isnum(temp[1], 16)) && temp[1][0] != '\0')
 						return (NULL);//return NULL from return of free function
 					arr[i][j]->color = 0x00000000 + ft_atoi(temp[1]);
 				}
