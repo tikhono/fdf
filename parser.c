@@ -18,9 +18,9 @@
 
 int		number_of_rows(int fd)
 {
-	int		end;
 	int		res;
 	char	*line;
+	ssize_t	end;
 
 	res = 0;
 	end = 1;
@@ -37,20 +37,29 @@ int		number_of_rows(int fd)
 	return (res);
 }
 
+int 	num_of_col(char **buff)
+{
+	int 	res;
+
+	res = 0;
+	while (buff[res])
+		res++;
+	return (res);
+}
+
 t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 {
 	char	*line;
 	char	**temp;
 	char	**buf;
 	
-	arr = NULL;	
 	while (get_next_line(fd, &line))
 	{
 		buf = ft_strsplit(line, ' ');
 		printf("here!\n");
 		free(line);
 		j = 0;
-		arr[i] = (t_pix **)malloc(sizeof(t_pix *) * (ft_strlen(buf) + 1));//fix this shit mathafaka
+		arr[i] = (t_pix **)malloc(sizeof(t_pix *) * (num_of_col(buf) + 1));
 		printf("here!\n");
 		while (buf[j] != NULL)
 		{
@@ -79,7 +88,6 @@ t_pix	***parse(char *file)
 {
 	int		fd;
 	int		rows;
-	char	*line;
 	t_pix 	***arr;
 
 	fd = open(file, O_RDONLY);
