@@ -66,7 +66,7 @@ int		main(int ac, char **av)
 			j = 0;
 			while (arr[i][j] != NULL)
 			{
-				printf("%i  ", arr[i][j]->oz);
+				printf("%i\t%i\t", arr[i][j]->oz, arr[i][j]->color);
 				++j;
 			}
 			printf("\n");
