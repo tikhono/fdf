@@ -36,7 +36,6 @@ int		main(int ac, char **av)
 	arr = parse(av[ac]);
 	if (arr)
 	{
-		printf("here!\n");
 	////mlx = mlx_init();
 	////win = mlx_new_window(mlx, 1200, 600, ft_itoa(ac));
 	//	mlx_pixel_put(mlx, win, 100, 100, 0x00FF0000); //bright
@@ -64,7 +63,6 @@ int		main(int ac, char **av)
 		i = 0;
 		while (arr[i] != NULL)
 		{
-			printf("here!\n");
 			j = 0;
 			while (arr[i][j] != NULL)
 			{
@@ -74,8 +72,6 @@ int		main(int ac, char **av)
 			printf("\n");
 			++i;
 		}
-
-		printf("there!\n");
 	////mlx_loop(mlx);
 	}
 	else

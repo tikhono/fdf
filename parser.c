@@ -37,7 +37,7 @@ int		number_of_rows(int fd)
 	return (res);
 }
 
-int 	num_of_col(char **buff)
+int 	num_of_col(char **buff)//put this function in libft
 {
 	int 	res;
 
@@ -56,21 +56,19 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 	while (get_next_line(fd, &line))
 	{
 		buf = ft_strsplit(line, ' ');
-		printf("here!\n");
 		free(line);
 		j = 0;
 		arr[i] = (t_pix **)malloc(sizeof(t_pix *) * (num_of_col(buf) + 1));
-		printf("here!\n");
 		while (buf[j] != NULL)
 		{
-			temp = ft_strsplit(buf[j], ',');
+			temp = ft_strsplit(buf[j], ',');//check temp[0] and temp[1] on non-digit symbols
 			arr[i][j] = (t_pix *)malloc(sizeof(t_pix));
 			arr[i][j]->oz = ft_atoi(temp[0]);
 			if (temp[1])
 			{
 				arr[i][j]->color = 0x00000000 + ft_atoi(temp[1]);
 				if (temp[2])
-					return (NULL);//write free function
+					return (NULL);//return NULL from return of free function
 			}
 			else
 				arr[i][j]->color = 0x00FFFFFF;
