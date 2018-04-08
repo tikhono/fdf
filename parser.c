@@ -57,11 +57,11 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 					return (NULL);//return NULL from return of free function
 				arr[i][j] = (t_pix *)malloc(sizeof(t_pix));
 				arr[i][j]->oz = ft_atoi(temp[0]);
-				if (temp[1])
+				if (temp[1] != NULL)
 				{
 					if ((!ft_isnum(temp[1], 16)) && temp[1][0] != '\0')
 						return (NULL);//return NULL from return of free function
-					arr[i][j]->color = 0x00000000 + ft_atoi(temp[1]);
+					arr[i][j]->color = ft_atoi_base(temp[1], 16);
 				}
 				else
 					arr[i][j]->color = 0x00FFFFFF;

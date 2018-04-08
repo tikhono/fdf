@@ -48,18 +48,7 @@ int		main(int ac, char **av)
 		mlx_pixel_put(mlx, win, 30, 100, 0xA6FF0000);
 		mlx_pixel_put(mlx, win, 20, 100, 0xBFFF0000);
 		mlx_pixel_put(mlx, win, 10, 100, 0xD9FF0000); //dark
-		mlx_pixel_put(mlx, win, 70, 110, 0x4DFF0000);
-		mlx_pixel_put(mlx, win, 70, 110, 0x4DFF0000);
-		mlx_pixel_put(mlx, win, 60, 110, 0x66FF0000);
-		mlx_pixel_put(mlx, win, 60, 110, 0x66FF0000);
-		mlx_pixel_put(mlx, win, 50, 110, 0xD9FF0000); //dark
-		mlx_pixel_put(mlx, win, 50, 110, 0xD9FF0000); //dark
-		mlx_pixel_put(mlx, win, 50, 110, 0xD9FF0000); //dark
-		mlx_pixel_put(mlx, win, 50, 110, 0xD9FF0000); //dark
-		mlx_pixel_put(mlx, win, 50, 110, 0x00FF0000); //bright
-		mlx_pixel_put(mlx, win, 50, 110, 0x00FF0000); //bright
-		mlx_pixel_put(mlx, win, 40, 110, 0x80FF0000); //dark
-		mlx_pixel_put(mlx, win, 40, 110, 0x80FF0000); //dark
+
     //
 	//	draw_line(100, 100, 200, 200, mlx, win);
 	//	draw_line(100, 150, 500, 252, mlx, win);
@@ -78,7 +67,7 @@ int		main(int ac, char **av)
 			j = 0;
 			while (arr[i][j] != NULL)
 			{
-				printf("%i\t%10i\t", arr[i][j]->oz, arr[i][j]->color);
+				printf("%i %i  ", arr[i][j]->oz, arr[i][j]->color);
 				++j;
 			}
 			printf("\n");
