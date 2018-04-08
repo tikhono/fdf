@@ -47,6 +47,32 @@ int 	num_of_col(char **buff)//put this function in libft
 	return (res);
 }
 
+int 	ft_is_num(char *num, int base)//put this function in libft)
+{
+	char 	*c;
+
+	if (num)
+	{
+		c = num;
+		if ((*c == '-' || *c == '+') && base == 10)
+			++c;
+		if ((*c == '0') && base == 16)
+		{
+			++c;
+			if (*c == 'x')
+				++c;
+		}
+		while (*c != '\0')
+		{
+			if (!ft_isdigit(*c) && !((base == 16) && (*c >= 'A' && *c <= 'F')))
+				return (0);
+			++c;
+		}
+		return (1);
+	}
+	return (0);
+}
+
 t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 {
 	char	*line;
@@ -61,23 +87,31 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 		arr[i] = (t_pix **)malloc(sizeof(t_pix *) * (num_of_col(buf) + 1));
 		while (buf[j] != NULL)
 		{
-			temp = ft_strsplit(buf[j], ',');//check temp[0] and temp[1] on non-digit symbols
-			arr[i][j] = (t_pix *)malloc(sizeof(t_pix));
-			arr[i][j]->oz = ft_atoi(temp[0]);
-			if (temp[1])
+			temp = ft_strsplit(buf[j], ',');
+			if (num_of_col(temp) <= 2)
 			{
-				arr[i][j]->color = 0x00000000 + ft_atoi(temp[1]);
-				if (temp[2])
+				if (!ft_is_num(temp[0],10))
 					return (NULL);//return NULL from return of free function
+				arr[i][j] = (t_pix *)malloc(sizeof(t_pix));
+				arr[i][j]->oz = ft_atoi(temp[0]);
+				if (temp[1])
+				{
+					if ((!ft_is_num(temp[1], 16)) && temp[1][0] != '\0')
+						return (NULL);//return NULL from return of free function
+					arr[i][j]->color = 0x00000000 + ft_atoi(temp[1]);
+				}
+				else
+					arr[i][j]->color = 0x00FFFFFF;
 			}
 			else
-				arr[i][j]->color = 0x00FFFFFF;
+				return (NULL);//return NULL from return of free function
 			++j;
 		}
 		arr[i][j] = NULL;
 		free(buf);
 		++i;
 	}
+	arr[i] = NULL;
 	close(fd);
 	return (arr);
 }
