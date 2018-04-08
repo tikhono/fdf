@@ -36,6 +36,20 @@ int		number_of_rows(int fd)
 	return (res);
 }
 
+t_pix ***erase(t_pix ***arr, int i, int j)
+{
+	int 	z;
+
+	while (arr != NULL)
+	{
+		while (*arr)
+
+
+		++arr;
+	}
+	return (NULL);
+}
+
 t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 {
 	char	*line;
@@ -70,10 +84,11 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 				return (NULL);//return NULL from return of free function
 			++j;
 		}
-		arr[i][j] = NULL;
+		arr[i][j] = NULL;//but this null work well
 		free(buf);
 		++i;
 	}
+	__builtin_printf("i   :%d\n", i);
 	arr[i] = NULL;
 	close(fd);
 	return (arr);
@@ -93,6 +108,7 @@ t_pix	***parse(char *file)
 	if (fd < 0 || rows <= 0)
 		return (0);
 	arr = (t_pix ***)malloc(sizeof(t_pix **) * (rows + 1));
-	arr[rows] = NULL;
+	__builtin_printf("rows:%d\n", rows);
+	arr[rows + 1] = NULL;//this null don`t work
 	return (fill(arr, fd, 0, 0));
 }

@@ -67,10 +67,10 @@ int		main(int ac, char **av)
 			j = 0;
 			while (arr[i][j] != NULL)
 			{
-				printf("%i %i  ", arr[i][j]->oz, arr[i][j]->color);
+	//			printf("%i %i  ", arr[i][j]->oz, arr[i][j]->color);
 				++j;
 			}
-			printf("\n");
+	//		printf("\n");
 			++i;
 		}
 		mlx_loop(mlx);
