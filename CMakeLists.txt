@@ -3,7 +3,7 @@ project(fdf)
 
 set(CMAKE_C_STANDARD 99)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -framework OpenGL -framework AppKit")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -framework OpenGL -framework AppKit -L/usr/local/lib -lmlx")
 
 set(SOURCE_FILES main.c parser.c part.c)
 
