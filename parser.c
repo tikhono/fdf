@@ -14,7 +14,6 @@
 #include <unistd.h>
 #include "parser.h"
 #include "libft/libft.h"
-#include <printf.h>
 
 int		number_of_rows(int fd)
 {
