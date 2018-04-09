@@ -23,6 +23,8 @@ int		main(int ac, char **av)
 	int		j;
 	void	*mlx;
 	void	*win;
+	void	*img;
+	int 	*adr;
 	t_pix	***arr;
 
 	if (ac < 2)
@@ -34,22 +36,45 @@ int		main(int ac, char **av)
 			break ;
 	--ac;
 	arr = parse(av[ac]);
+	int a;
+	int b;
+	int c;
 	if (arr)
 	{
 		mlx = mlx_init();
 		win = mlx_new_window(mlx, 1200, 600, ft_itoa(ac));
-		mlx_pixel_put(mlx, win, 100, 100, 0x00FF0000); //bright
-		mlx_pixel_put(mlx, win, 90, 100, 0x1AFF0000);
-		mlx_pixel_put(mlx, win, 80, 100, 0x33FF0000);
-		mlx_pixel_put(mlx, win, 70, 100, 0x4DFF0000);
-		mlx_pixel_put(mlx, win, 60, 100, 0x66FF0000);
-		mlx_pixel_put(mlx, win, 50, 100, 0x80FF0000);
-		mlx_pixel_put(mlx, win, 40, 100, 0x99FF0000);
-		mlx_pixel_put(mlx, win, 30, 100, 0xA6FF0000);
-		mlx_pixel_put(mlx, win, 20, 100, 0xBFFF0000);
-		mlx_pixel_put(mlx, win, 10, 100, 0xD9FF0000); //dark
 
-    //
+		img = mlx_new_image(mlx, 1200, 600);
+		adr = (int *)mlx_get_data_addr(img, &a, &b, &c);
+		adr[10] = 0xBFFF0000;
+		adr[11] = 0xBFFF0000;
+		adr[12] = 0xBFFF0000;
+		adr[13] = 0xBFFF0000;
+		adr[14] = 0xBFFF0000;
+		adr[15] = 0xBFFF0000;
+		adr[16] = 0xBFFF0000;
+		adr[17] = 0xBFFF0000;
+		mlx_put_image_to_window(mlx, win, img, 0, 0);
+
+		img = mlx_new_image(mlx, 1200, 600);
+		adr = (int *)mlx_get_data_addr(img, &a, &b, &c);
+		adr[10] = 0x99FF0000;
+		adr[11] = 0x99FF0000;
+		adr[12] = 0x99FF0000;
+		adr[13] = 0x99FF0000;
+		adr[14] = 0x99FF0000;
+		adr[15] = 0x99FF0000;
+		mlx_put_image_to_window(mlx, win, img, 0, 0);
+    //	mlx_pixel_put(mlx, win, 100, 100, 0x00FF0000); //bright
+	//	mlx_pixel_put(mlx, win, 90, 100, 0x1AFF0000);
+	//	mlx_pixel_put(mlx, win, 80, 100, 0x33FF0000);
+	//	mlx_pixel_put(mlx, win, 70, 100, 0x4DFF0000);
+	//	mlx_pixel_put(mlx, win, 60, 100, 0x66FF0000);
+	//	mlx_pixel_put(mlx, win, 50, 100, 0x80FF0000);
+	//	mlx_pixel_put(mlx, win, 40, 100, 0x99FF0000);
+	//	mlx_pixel_put(mlx, win, 30, 100, 0xA6FF0000);
+	//	mlx_pixel_put(mlx, win, 20, 100, 0xBFFF0000);
+	//	mlx_pixel_put(mlx, win, 10, 100, 0xD9FF0000); //dark
 	//	draw_line(100, 100, 200, 200, mlx, win);
 	//	draw_line(100, 150, 500, 252, mlx, win);
 	//	draw_line(100, 200, 500, 302, mlx, win);

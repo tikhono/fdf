@@ -89,7 +89,6 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 		++i;
 	}
 	__builtin_printf("i   :%d\n", i);
-	arr[i] = NULL;
 	close(fd);
 	return (arr);
 }
@@ -107,8 +106,8 @@ t_pix	***parse(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0 || rows <= 0)
 		return (0);
-	arr = (t_pix ***)malloc(sizeof(t_pix **) * (rows + 1));
+	arr = (t_pix ***)malloc(sizeof(t_pix **) * (rows + 2));
 	__builtin_printf("rows:%d\n", rows);
-	arr[rows + 1] = NULL;//this null don`t work
+	arr[rows + 1] = NULL;
 	return (fill(arr, fd, 0, 0));
 }
