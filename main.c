@@ -18,8 +18,7 @@
 
 int		main(int ac, char **av)
 {
-	int		i;
-	int		j;
+
 	void	*mlx;
 	void	*win;
 	void	*img;
@@ -55,51 +54,35 @@ int		main(int ac, char **av)
 		adr[17] = 0xBFFF0000;
 		mlx_put_image_to_window(mlx, win, img, 0, 0);
 
-		img = mlx_new_image(mlx, 1200, 600);
-		adr = (int *)mlx_get_data_addr(img, &a, &b, &c);
-		adr[10] = 0x99FF0000;
-		adr[11] = 0x99FF0000;
-		adr[12] = 0x99FF0000;
-		adr[13] = 0x99FF0000;
-		adr[14] = 0x99FF0000;
-		adr[15] = 0x99FF0000;
-		mlx_put_image_to_window(mlx, win, img, 0, 0);
-    //	mlx_pixel_put(mlx, win, 100, 100, 0x00FF0000); //bright
-	//	mlx_pixel_put(mlx, win, 90, 100, 0x1AFF0000);
-	//	mlx_pixel_put(mlx, win, 80, 100, 0x33FF0000);
-	//	mlx_pixel_put(mlx, win, 70, 100, 0x4DFF0000);
-	//	mlx_pixel_put(mlx, win, 60, 100, 0x66FF0000);
-	//	mlx_pixel_put(mlx, win, 50, 100, 0x80FF0000);
-	//	mlx_pixel_put(mlx, win, 40, 100, 0x99FF0000);
-	//	mlx_pixel_put(mlx, win, 30, 100, 0xA6FF0000);
-	//	mlx_pixel_put(mlx, win, 20, 100, 0xBFFF0000);
-	//	mlx_pixel_put(mlx, win, 10, 100, 0xD9FF0000); //dark
-	//	draw_line(100, 100, 200, 200, mlx, win);
-	//	draw_line(100, 150, 500, 252, mlx, win);
-	//	draw_line(100, 200, 500, 302, mlx, win);
-	//	draw_line(100, 250, 500, 452, mlx, win);
-	//	draw_line(100, 300, 500, 402, mlx, win);
-	//	draw_line(100, 350, 500, 452, mlx, win);
-	//	draw_line(100, 400, 500, 502, mlx, win);
-	//	draw_line(100, 450, 500, 552, mlx, win);
-	//	draw_line(100, 500, 500, 602, mlx, win);
-	//	draw_line(100, 550, 500, 652, mlx, win);
-	////call_hookers;
-		i = 0;
-		while (arr[i] != NULL)
-		{
-			j = 0;
-			while (arr[i][j] != NULL)
-			{
-	//			printf("%i %i  ", arr[i][j]->oz, arr[i][j]->color);
-				++j;
-			}
-	//		printf("\n");
-			++i;
-		}
 		mlx_loop(mlx);
 	}
 	else
 		ft_putstr("Invalid map");
 	return (0);
 }
+
+//	int		i;
+//	int		j;
+//	i = 0;
+//	while (arr[i] != NULL)
+//	{
+//		j = 0;
+//		while (arr[i][j] != NULL)
+//		{
+//			printf("%i %i  ", arr[i][j]->oz, arr[i][j]->color);
+//			++j;
+//		}
+//		printf("\n");
+//		++i;
+//	}
+
+//	0x00FF0000 //bright
+//	0x1AFF0000
+//	0x33FF0000
+//	0x4DFF0000
+//	0x66FF0000
+//	0x80FF0000
+//	0x99FF0000
+//	0xA6FF0000
+//	0xBFFF0000
+//	0xD9FF0000 //dark
