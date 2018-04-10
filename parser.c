@@ -36,17 +36,26 @@ int		number_of_rows(int fd)
 	return (res);
 }
 
-t_pix ***erase(t_pix ***arr, int i, int j)
+t_pix ***erase(t_pix ***arr)
 {
-	int 	z;
+	int 	x;
+	int 	y;
 
-	while (arr != NULL)
+	x = 0;
+	while (arr[x])
 	{
-		while (*arr)
-
-
-		++arr;
+		y = 0;
+		while (arr[x][y])
+		{
+			free(arr[x][y]);
+			++y;
+		}
+		++x;
 	}
+
+
+
+	free(arr);
 	return (NULL);
 }
 
@@ -77,7 +86,7 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 	char	*line;
 	char	**temp;
 	char	**buf;
-	
+
 	while (get_next_line(fd, &line))
 	{
 		buf = ft_strsplit(line, ' ');
@@ -88,7 +97,7 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 		{
 			temp = ft_strsplit(buf[j], ',');
 			if (put_line(arr, temp,i, j))
-				return (erase(arr, i, j));
+				return (erase(arr));
 			++j;
 		}
 		arr[i][j] = NULL;
