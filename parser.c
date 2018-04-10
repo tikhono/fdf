@@ -50,6 +50,28 @@ t_pix ***erase(t_pix ***arr, int i, int j)
 	return (NULL);
 }
 
+int		put_line(t_pix ***arr, char **temp, int i, int j)
+{
+	if (ft_num_of_rows(temp) <= 2)
+	{
+		if (!ft_isnum(temp[0],10))
+			return (1);
+		arr[i][j] = (t_pix *)malloc(sizeof(t_pix));
+		arr[i][j]->oz = ft_atoi(temp[0]);
+		if (temp[1] != NULL)
+		{
+			if ((!ft_isnum(temp[1], 16)) && temp[1][0] != '\0')
+				return (1);
+			arr[i][j]->color = ft_atoi_base(temp[1], 16);
+		}
+		else
+			arr[i][j]->color = 0x00FFFFFF;
+	}
+	else
+		return (1);
+	return (0);
+}
+
 t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 {
 	char	*line;
@@ -62,25 +84,10 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 		free(line);
 		j = 0;
 		arr[i] = (t_pix **)malloc(sizeof(t_pix *) * (ft_num_of_rows(buf) + 1));
-		while (buf[j] != NULL)//cutout this loop into another function. i, j, arr, temp
+		while (buf[j] != NULL)
 		{
 			temp = ft_strsplit(buf[j], ',');
-			if (ft_num_of_rows(temp) <= 2)
-			{
-				if (!ft_isnum(temp[0],10))
-					return (NULL);//return NULL from return of free function
-				arr[i][j] = (t_pix *)malloc(sizeof(t_pix));
-				arr[i][j]->oz = ft_atoi(temp[0]);
-				if (temp[1] != NULL)
-				{
-					if ((!ft_isnum(temp[1], 16)) && temp[1][0] != '\0')
-						return (NULL);//return NULL from return of free function
-					arr[i][j]->color = ft_atoi_base(temp[1], 16);
-				}
-				else
-					arr[i][j]->color = 0x00FFFFFF;
-			}
-			else
+			if (put_line(arr, temp,i, j))
 				return (NULL);//return NULL from return of free function
 			++j;
 		}
