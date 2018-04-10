@@ -88,7 +88,7 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 		{
 			temp = ft_strsplit(buf[j], ',');
 			if (put_line(arr, temp,i, j))
-				return (NULL);//return NULL from return of free function
+				return (erase(arr, i, j));
 			++j;
 		}
 		arr[i][j] = NULL;
