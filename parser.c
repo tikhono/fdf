@@ -6,13 +6,13 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 17:57:48 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/07 21:13:24 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/04/10 18:15:39 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <unistd.h>
-#include "parser.h"
+#include "main.h"
 #include "libft/libft.h"
 
 int		number_of_rows(int fd)
@@ -84,11 +84,10 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 				return (NULL);//return NULL from return of free function
 			++j;
 		}
-		arr[i][j] = NULL;//but this null work well
+		arr[i][j] = NULL;
 		free(buf);
 		++i;
 	}
-	__builtin_printf("i   :%d\n", i);
 	close(fd);
 	return (arr);
 }
@@ -107,7 +106,6 @@ t_pix	***parse(char *file)
 	if (fd < 0 || rows <= 0)
 		return (0);
 	arr = (t_pix ***)malloc(sizeof(t_pix **) * (rows + 2));
-	__builtin_printf("rows:%d\n", rows);
 	arr[rows + 1] = NULL;
 	return (fill(arr, fd, 0, 0));
 }

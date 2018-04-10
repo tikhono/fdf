@@ -6,15 +6,14 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 16:34:05 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/05 19:41:50 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/04/10 17:47:07 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <math.h>
 #include <mlx.h>
-#include "line.h"
-#include "part.h"
+#include "main.h"
 
 void	swap(int *a, int *b)
 {

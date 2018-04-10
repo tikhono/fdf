@@ -6,7 +6,7 @@
 #    By: atikhono <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/01 17:15:51 by atikhono          #+#    #+#              #
-#    Updated: 2018/04/07 11:45:51 by atikhono         ###   ########.fr        #
+#    Updated: 2018/04/10 17:46:06 by atikhono         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ FLAGS = -Wfatal-errors
 
 MLX = -lmlx -framework AppKit -framework OpenGL  
 
-SRC =	main.c \
+SRC =	main.c\
 		line.c\
 		parser.c\
 		part.c

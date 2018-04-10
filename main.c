@@ -6,14 +6,13 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 15:56:24 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/07 21:08:29 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/04/10 18:14:40 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <unistd.h>
-#include "parser.h"
-#include "line.h"
+#include "main.h"
 #include "libft/libft.h"
 #include "printf.h"
 
