@@ -71,6 +71,8 @@ int		put_line(t_pix ***arr, char **temp, int i, int j)
 		{
 			if ((!ft_isnum(temp[1], 16)) && temp[1][0] != '\0')
 				return (1);
+			if (ft_strlen(temp[1]) >= 10)
+				return (1);
 			arr[i][j]->color = ft_atoi_base(temp[1], 16);
 		}
 		else
