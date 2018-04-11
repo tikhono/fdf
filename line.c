@@ -54,45 +54,26 @@ void	put_pixel(int x, int y, double c, void *mlx, void *win)
 
 void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
 {
-	int		i;
-	int		dx;
-	int		dy;
-	double	grad;
-	double	intery;
+	double	dist;
+	double	sqr;
+	int		x;
+	int 	y;
 
-	compare(&x0, &y0, &x1, &y1);
-	dx = x1 - x0;
-	dy = y1 - y0;
-	grad = dy / dx;
-	if (dx == 0.0)
-		grad = 1.0;
-	intery = y0;
-	if (labs(y1 - y0) > labs(x1 - x0))
+	sqr = sqrt((y1 - y0)(y1 - y0) + (x1 - x0)(x1 - x0));
+	y = y0;
+	while (y <= y1)
 	{
-		i = x0;
-		while (i < x1)
+		x = x0;
+		while (x <= x1)
 		{
-		//	put_pixel(ipart(intery) + 2, i, rfpart(intery), mlx, win);
-		//	put_pixel(ipart(intery) + 1, i, rfpart(intery), mlx, win);
-			put_pixel(ipart(intery), i, fpart(intery), mlx, win);
-			put_pixel(ipart(intery) - 1, i, rfpart(intery), mlx, win);
-		//	put_pixel(ipart(intery) - 2, i, rfpart(intery), mlx, win);
-			intery = intery + grad;
-			++i;
+			dist = fabs((y1 - y0) * x - (x1 - x0) * y + x1y0 - y2x1) / sqr;
+			if (dist > 1)
+				break;
+			++x;
 		}
+		++y;
 	}
-	else
-	{
-		i = x0;
-		while (i < x1)
-		{
-		//	put_pixel(i, ipart(intery) + 2, rfpart(intery), mlx, win);
-		//	put_pixel(i, ipart(intery) + 1, rfpart(intery), mlx, win);
-			put_pixel(i, ipart(intery), fpart(intery), mlx, win);
-			put_pixel(i, ipart(intery) - 1, rfpart(intery), mlx, win);
-		//	put_pixel(i, ipart(intery) - 2, rfpart(intery), mlx, win);
-			intery = intery + grad;
-			++i;
-		}
-	}
+
+
+
 }
