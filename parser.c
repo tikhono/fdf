@@ -56,7 +56,7 @@ t_pix ***erase(t_pix ***arr)
 	return (NULL);
 }
 
-int		put_line(t_pix ***arr, char **temp, int i, int j)
+int		put_pix(t_pix ***arr, char **temp, int i, int j)
 {
 	if (ft_num_of_rows(temp) <= 2)
 	{
@@ -85,21 +85,23 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 	char	*line;
 	char	**temp;
 	char	**buf;
+	int 	rows;
 
 	while (get_next_line(fd, &line))
 	{
 		buf = ft_strsplit(line, ' ');
 		free(line);
 		j = 0;
-		arr[i] = (t_pix **)malloc(sizeof(t_pix *) * (ft_num_of_rows(buf) + 1));
+		rows = ft_num_of_rows(buf);
+		arr[i] = (t_pix **)malloc(sizeof(t_pix *) * (rows + 1));
+		arr[i][rows] = NULL;
 		while (buf[j] != NULL)
 		{
 			temp = ft_strsplit(buf[j], ',');
-			if (put_line(arr, temp,i, j))
+			if (put_pix(arr, temp,i, j))
 				return (erase(arr));
 			++j;
 		}
-		arr[i][j] = NULL;
 		free(buf);
 		++i;
 	}
