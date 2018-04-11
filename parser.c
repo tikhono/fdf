@@ -85,16 +85,13 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 	char	*line;
 	char	**temp;
 	char	**buf;
-	int 	rows;
 
 	while (get_next_line(fd, &line))
 	{
 		buf = ft_strsplit(line, ' ');
 		free(line);
 		j = 0;
-		rows = ft_num_of_rows(buf);
-		arr[i] = (t_pix **)malloc(sizeof(t_pix *) * (rows + 1));
-		arr[rows] = NULL;
+		arr[i] = (t_pix **)malloc(sizeof(t_pix *) * (ft_num_of_rows(buf) + 1));
 		while (buf[j] != NULL)
 		{
 			temp = ft_strsplit(buf[j], ',');
