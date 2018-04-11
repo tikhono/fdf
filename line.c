@@ -61,15 +61,28 @@ void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
 
 	sqr = sqrt((y1 - y0)*(y1 - y0) + (x1 - x0)*(x1 - x0));
 	y = y0;
+	x = x0;
 	while (y <= y1)
 	{
-		x = x0;
 		while (x <= x1)
 		{
-			dist = fabs((y1 - y0) * x - (x1 - x0) * y + x1*y0 - y1*x0) / sqr;
-			if (dist > 1)
-				break;
-			++x;
+			//go throgh x until right dist
+			dist = fabs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
+			while (dist > 1)
+			{
+				++x;
+				dist = fabs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
+			}
+			//go throgh x until wrong dist
+			dist = fabs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
+			while (dist <= 1)
+			{
+				put_pixel(x, y, dist, mlx, win);
+				++x;
+				dist = fabs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
+			}
+			//change start point (x)
+			x = x0;
 		}
 		++y;
 	}
