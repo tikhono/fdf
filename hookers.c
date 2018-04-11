@@ -12,11 +12,21 @@
 
 #include "main.h"
 
-void	call_hookers(void)
+void	rot(int key, t_pix ***arr)
+{}
+
+void	move(int key, t_pix ***arr)
+{}
+
+void	zoom(int key, t_pix ***arr)
+{}
+
+void	call_hookers(int key, t_pix ***arr)
 {
-
-
-
-
-
+	if ((0 <= key && key <= 2) || (12 <= key && key <= 14))
+		rot(key, arr);
+	if (123 <= key && key <= 126)
+		move(key, arr);
+	if (key == 3 || key == 15)
+		zoom(key, arr);
 }
