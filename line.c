@@ -57,6 +57,7 @@ void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
 	double	dist;
 	double	sqr;
 	int		x;
+	int 	start;
 	int 	y;
 
 	sqr = sqrt((y1 - y0)*(y1 - y0) + (x1 - x0)*(x1 - x0));
@@ -72,6 +73,7 @@ void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
 			{
 				++x;
 				dist = fabs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
+				start = x;
 			}
 			//go throgh x until wrong dist
 			dist = fabs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
@@ -82,7 +84,7 @@ void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
 				dist = fabs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
 			}
 			//change start point (x)
-			x = x0;
+			x = start;
 		}
 		++y;
 	}
