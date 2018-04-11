@@ -59,14 +59,14 @@ void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
 	int		x;
 	int 	y;
 
-	sqr = sqrt((y1 - y0)(y1 - y0) + (x1 - x0)(x1 - x0));
+	sqr = sqrt((y1 - y0)*(y1 - y0) + (x1 - x0)*(x1 - x0));
 	y = y0;
 	while (y <= y1)
 	{
 		x = x0;
 		while (x <= x1)
 		{
-			dist = fabs((y1 - y0) * x - (x1 - x0) * y + x1y0 - y2x1) / sqr;
+			dist = fabs((y1 - y0) * x - (x1 - x0) * y + x1*y0 - y1*x0) / sqr;
 			if (dist > 1)
 				break;
 			++x;
