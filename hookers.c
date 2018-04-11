@@ -21,7 +21,7 @@ void	move(int key, t_pix ***arr)
 void	zoom(int key, t_pix ***arr)
 {}
 
-void	call_hookers(int key, t_pix ***arr)
+int		call_hookers(int key, t_pix ***arr)
 {
 	if ((0 <= key && key <= 2) || (12 <= key && key <= 14))
 		rot(key, arr);
@@ -29,4 +29,5 @@ void	call_hookers(int key, t_pix ***arr)
 		move(key, arr);
 	if (key == 3 || key == 15)
 		zoom(key, arr);
+	return (0);
 }

@@ -48,19 +48,7 @@ int		main(int ac, char **av)
 		mlx = mlx_init();
 		win = mlx_new_window(mlx, 1200, 600, ft_itoa(ac));
 
-		//img
-		img = mlx_new_image(mlx, 1200, 600);
-		adr = (int *)mlx_get_data_addr(img, &a, &b, &c);
-		adr[10] = 0xBFFF0000;
-		adr[11] = 0xBFFF0000;
-		adr[12] = 0xBFFF0000;
-		adr[13] = 0xBFFF0000;
-		adr[14] = 0xBFFF0000;
-		adr[15] = 0xBFFF0000;
-		adr[16] = 0xBFFF0000;
-		adr[17] = 0xBFFF0000;
-		mlx_put_image_to_window(mlx, win, img, 0, 0);
-		//img end
+		draw_line(10, 10, 200, 120, mlx, win);
 
 		mlx_hook(win, 2, 5, call_hookers, arr);
 		mlx_hook(win, 17, 1L << 17, exit_mouse, arr);
@@ -70,6 +58,18 @@ int		main(int ac, char **av)
 		ft_putstr("Invalid map");
 	return (0);
 }
+
+//	img = mlx_new_image(mlx, 1200, 600);
+//	adr = (int *)mlx_get_data_addr(img, &a, &b, &c);
+//	adr[10] = 0xBFFF0000;
+//	adr[11] = 0xBFFF0000;
+//	adr[12] = 0xBFFF0000;
+//	adr[13] = 0xBFFF0000;
+//	adr[14] = 0xBFFF0000;
+//	adr[15] = 0xBFFF0000;
+//	adr[16] = 0xBFFF0000;
+//	adr[17] = 0xBFFF0000;
+//	mlx_put_image_to_window(mlx, win, img, 0, 0);
 
 //	int		i;
 //	int		j;

@@ -30,7 +30,7 @@ int		rpart(double x);
 double	fpart(double x);
 double	rfpart(double x);
 void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win);
-void	call_hookers(int key, t_pix ***arr);
+int		call_hookers(int key, t_pix ***arr);
 t_pix	***erase(t_pix ***arr);
 
 #endif
