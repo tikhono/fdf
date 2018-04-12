@@ -43,7 +43,7 @@ void	put_pixel(int x, int y, double c, void *mlx, void *win)
 	int		alpha;
 	int		argb;
 
-	alpha = (c * 1000) / FACTOR;
+	alpha = (int)((c * 1001) / FACTOR);
 	alpha <<= 24;
 	argb = 0x0000FF00;
 	argb <<= 12;
@@ -66,26 +66,20 @@ void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
 	start = x0;
 	while (y <= y1)
 	{
-		//go throgh x until right dist
 		dist = abs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
 		while (dist > 1)
 		{
-			start = x;
 			++x;
 			dist = abs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
+			start = x;
 		}
-		//go throgh x until wrong dist
 		while (dist <= 1)
 		{
-			put_pixel(x, y, 1 - dist, mlx, win);
+			put_pixel(x, y, dist, mlx, win);
 			++x;
 			dist = abs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
 		}
-		//change start point (x)
 		x = start;
 		++y;
 	}
-
-
-
 }
