@@ -51,12 +51,21 @@ void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
 	int		x;
 	int 	start;
 	int 	y;
+	int 	yi;
 
-	sqr = sqrt((y1 - y0)*(y1 - y0) + (x1 - x0)*(x1 - x0));
+	yi = 1;
+	if (x0 > x1)
+	{
+		swap(&x0, &x1);
+		swap(&y0, &y1);
+	}
+	if (y0 > y1)
+		yi = -1;
 	y = y0;
 	x = x0;
 	start = x0;
-	while (y <= y1)
+	sqr = sqrt((y1 - y0)*(y1 - y0) + (x1 - x0)*(x1 - x0));
+	while (y != y1)
 	{
 		dist = abs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
 		while (dist > 1 && x <= x1)//instead 1 param of width
@@ -72,6 +81,6 @@ void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
 			dist = abs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
 		}
 		x = start;
-		++y;
+		y += yi;
 	}
 }
