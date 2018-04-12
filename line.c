@@ -26,16 +26,10 @@ void	swap(int *a, int *b)
 
 void	compare(int *x0, int *y0, int *x1, int *y1)
 {
-	if (labs(*y1 - *y0) > labs(*x1 - *x0))
-	{
+	if (*x1 > *x0)
 		swap(x0, y0);
-		swap(x1, y1);
-	}
-	if (*x0 > *x1)
-	{
-		swap(x0, x1);
-		swap(y0, y1);
-	}
+	if (*y1 > *y0)
+		swap(y0, x1);
 }
 
 void	put_pixel(int x, int y, double c, void *mlx, void *win)
@@ -45,9 +39,7 @@ void	put_pixel(int x, int y, double c, void *mlx, void *win)
 
 	alpha = (int)((c * 1001) / FACTOR);
 	alpha <<= 24;
-	argb = 0x0000FF00;
-	argb <<= 12;
-	argb >>= 12;
+	argb = 0x00F90000;
 	argb += alpha;
 	mlx_pixel_put(mlx, win, x, y, argb);
 }
@@ -60,6 +52,7 @@ void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
 	int 	start;
 	int 	y;
 
+	//compare(&x0, &y0, &x1, &y1);
 	sqr = sqrt((y1 - y0)*(y1 - y0) + (x1 - x0)*(x1 - x0));
 	y = y0;
 	x = x0;

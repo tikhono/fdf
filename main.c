@@ -48,7 +48,8 @@ int		main(int ac, char **av)
 		mlx = mlx_init();
 		win = mlx_new_window(mlx, 1200, 600, ft_itoa(ac));
 
-		draw_line(10, 10, 200, 120, mlx, win);
+		draw_line(5, 10, 200, 120, mlx, win);
+		draw_line(10, 5, 120, 500, mlx, win);
 
 		mlx_hook(win, 2, 5, call_hookers, arr);
 		mlx_hook(win, 17, 1L << 17, exit_mouse, arr);
