@@ -67,15 +67,15 @@ void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
 	while (y <= y1)
 	{
 		dist = abs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
-		while (dist > 1)
+		while (dist > 1 && x <= x1)//instead 1 param of width
 		{
 			++x;
 			dist = abs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
 			start = x;
 		}
-		while (dist <= 1)
+		while (dist <= 1 && x <= x1)
 		{
-			put_pixel(x, y, dist, mlx, win);
+			put_pixel(x, y, dist, mlx, win);//divide dist on param
 			++x;
 			dist = abs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
 		}
