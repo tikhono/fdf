@@ -52,7 +52,6 @@ void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
 	int 	start;
 	int 	y;
 
-	//compare(&x0, &y0, &x1, &y1);
 	sqr = sqrt((y1 - y0)*(y1 - y0) + (x1 - x0)*(x1 - x0));
 	y = y0;
 	x = x0;
