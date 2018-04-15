@@ -5,7 +5,7 @@ set(CMAKE_C_STANDARD 99)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -framework OpenGL -framework AppKit -L/usr/local/lib -lmlx")
 
-set(SOURCE_FILES main.c parser.c line.c hookers.c)
+set(SOURCE_FILES main.c parser.c map.c line.c hookers.c)
 
 include_directories(/usr/local/include)
 

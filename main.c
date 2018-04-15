@@ -24,11 +24,7 @@ int 	exit_mouse(t_pix ***arr)
 
 int		main(int ac, char **av)
 {
-
-	void	*mlx;
-	void	*win;
-	void	*img;
-	int 	*adr;
+	t_mlx	ptr;
 	t_pix	***arr;
 
 	if (ac < 2)
@@ -40,36 +36,32 @@ int		main(int ac, char **av)
 			break ;
 	--ac;
 	arr = parse(av[ac]);
-	int a;
-	int b;
-	int c;
 	if (arr)
 	{
-		mlx = mlx_init();
-		win = mlx_new_window(mlx, 1200, 600, ft_itoa(ac));
+		ptr.mlx = mlx_init();
+		ptr.win = mlx_new_window(ptr.mlx, 1200, 600, ft_itoa(ac));
 
+		draw_line(100, 100, 100, 0, ptr.mlx, ptr.win);
+		draw_line(100, 100, 200, 0, ptr.mlx, ptr.win);
+		draw_line(100, 100, 200, 100, ptr.mlx, ptr.win);
+		draw_line(100, 100, 200, 200, ptr.mlx, ptr.win);
+		draw_line(100, 100, 100, 200, ptr.mlx, ptr.win);
+		draw_line(100, 100, 0, 200, ptr.mlx, ptr.win);
+		draw_line(100, 100, 0, 100, ptr.mlx, ptr.win);
+		draw_line(100, 100, 0, 0, ptr.mlx, ptr.win);
 
-		draw_line(100, 100, 100, 0, mlx, win);
-		draw_line(100, 100, 200, 0, mlx, win);
-		draw_line(100, 100, 200, 100, mlx, win);
-		draw_line(100, 100, 200, 200, mlx, win);
-		draw_line(100, 100, 100, 200, mlx, win);
-		draw_line(100, 100, 0, 200, mlx, win);
-		draw_line(100, 100, 0, 100, mlx, win);
-		draw_line(100, 100, 0, 0, mlx, win);
+		draw_line(100, 100, 150, 0, ptr.mlx, ptr.win);
+		draw_line(100, 100, 200, 50, ptr.mlx, ptr.win);
+		draw_line(100, 100, 200, 150, ptr.mlx, ptr.win);
+		draw_line(100, 100, 150, 200, ptr.mlx, ptr.win);
+		draw_line(100, 100, 50, 200, ptr.mlx, ptr.win);
+		draw_line(100, 100, 0, 150, ptr.mlx, ptr.win);
+		draw_line(100, 100, 0, 50, ptr.mlx, ptr.win);
+		draw_line(100, 100, 50, 0, ptr.mlx, ptr.win);
 
-		draw_line(100, 100, 150, 0, mlx, win);
-		draw_line(100, 100, 200, 50, mlx, win);
-		draw_line(100, 100, 200, 150, mlx, win);
-		draw_line(100, 100, 150, 200, mlx, win);
-		draw_line(100, 100, 50, 200, mlx, win);
-		draw_line(100, 100, 0, 150, mlx, win);
-		draw_line(100, 100, 0, 50, mlx, win);
-		draw_line(100, 100, 50, 0, mlx, win);
-
-		mlx_hook(win, 2, 5, call_hookers, arr);
-		mlx_hook(win, 17, 1L << 17, exit_mouse, arr);
-		mlx_loop(mlx);
+		mlx_hook(ptr.win, 2, 5, call_hookers, arr);
+		mlx_hook(ptr.win, 17, 1L << 17, exit_mouse, arr);
+		mlx_loop(ptr.mlx);
 	}
 	else
 		ft_putstr("Invalid map");

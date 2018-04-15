@@ -15,6 +15,16 @@
 # define PARSER_H
 # define FACTOR 3.9015625
 
+typedef struct		s_mlx
+{
+	void 			*mlx;
+	void			*win;
+	void			*img;
+	int 			a;
+	int 			b;
+	int 			c;
+}					t_mlx;
+
 typedef struct		s_pix
 {
 	int				x;
