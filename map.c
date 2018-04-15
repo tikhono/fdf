@@ -12,7 +12,7 @@
 
 #include "main.h"
 
-void 	put_map(t_pix ***arr, )
+void 	put_map(t_pix ***arr, t_mlx ptr)
 {
 
 
