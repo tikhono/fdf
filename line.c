@@ -63,14 +63,12 @@ void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
 		dist = abs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
 		while (dist > 1 && x <= x1)
 		{
-			start = x;
-			++x;
+			start = x++;
 			dist = abs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
 		}
 		while (dist <= 1 && x <= x1)
 		{
-			put_pixel(x, y, dist, mlx, win);
-			++x;
+			put_pixel(x++, y, dist, mlx, win);
 			dist = abs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
 		}
 		if (y == y1)
