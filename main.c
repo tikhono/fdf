@@ -48,17 +48,24 @@ int		main(int ac, char **av)
 		mlx = mlx_init();
 		win = mlx_new_window(mlx, 1200, 600, ft_itoa(ac));
 
-		draw_line(5, 10, 200, 120, mlx, win);
-		draw_line(10, 5, 120, 500, mlx, win);
 
-		//draw_line(200, 120, 5, 10, mlx, win);
-		//draw_line(120, 500, 10, 5, mlx, win);
+		draw_line(100, 100, 100, 0, mlx, win);
+		draw_line(100, 100, 200, 0, mlx, win);
+		draw_line(100, 100, 200, 100, mlx, win);
+		draw_line(100, 100, 200, 200, mlx, win);
+		draw_line(100, 100, 100, 200, mlx, win);
+		draw_line(100, 100, 0, 200, mlx, win);
+		draw_line(100, 100, 0, 100, mlx, win);
+		draw_line(100, 100, 0, 0, mlx, win);
 
-		//draw_line(100, 10, 100, 10, mlx, win);
-		//draw_line(10, 100, 10, 100, mlx, win);
-
-//		draw_line(10, 100, 100, 100, mlx, win);
-	//	draw_line(10, 10, 10, 100, mlx, win);
+		draw_line(100, 100, 150, 0, mlx, win);
+		draw_line(100, 100, 200, 50, mlx, win);
+		draw_line(100, 100, 200, 150, mlx, win);
+		draw_line(100, 100, 150, 200, mlx, win);
+		draw_line(100, 100, 50, 200, mlx, win);
+		draw_line(100, 100, 0, 150, mlx, win);
+		draw_line(100, 100, 0, 50, mlx, win);
+		draw_line(100, 100, 50, 0, mlx, win);
 
 		mlx_hook(win, 2, 5, call_hookers, arr);
 		mlx_hook(win, 17, 1L << 17, exit_mouse, arr);

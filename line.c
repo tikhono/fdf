@@ -26,10 +26,11 @@ void	swap(int *a, int *b)
 
 void	compare(int *x0, int *y0, int *x1, int *y1)
 {
-	if (*x0 < *x1)
-		swap(x0, y0);
-	if (*y1 > *y0)
-		swap(y0, x1);
+	if (*x0 > *x1)
+	{
+		swap(x0, x1);
+		swap(y0, y1);
+	}
 }
 
 void	put_pixel(int x, int y, double c, void *mlx, void *win)
@@ -57,10 +58,10 @@ void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
 	x = x0;
 	start = x0;
 	sqr = sqrt((y1 - y0)*(y1 - y0) + (x1 - x0)*(x1 - x0));
-	while (y != y1)
+	while (1)
 	{
 		dist = abs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
-		while (dist > 1 && x <= x1)//instead 1 param of width
+		while (dist > 1 && x <= x1)
 		{
 			start = x;
 			++x;
@@ -68,11 +69,13 @@ void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
 		}
 		while (dist <= 1 && x <= x1)
 		{
-			put_pixel(x, y, dist, mlx, win);//divide dist on param
+			put_pixel(x, y, dist, mlx, win);
 			++x;
 			dist = abs((y1 - y0)*x - (x1 - x0)*y + x1*y0 - y1*x0) / sqr;
 		}
+		if (y == y1)
+			break ;
 		x = start;
-		++y;
+		y0 < y1 ? ++y : --y;
 	}
 }
