@@ -16,9 +16,9 @@
 #include "libft/libft.h"
 #include "printf.h"
 
-int 	exit_mouse(t_pix ***arr)
+int 	exit_mouse(t_mlx ptr)
 {
-	erase(arr);
+	erase(*ptr.s_pix);
 	exit(0);
 }
 
@@ -40,27 +40,10 @@ int		main(int ac, char **av)
 	{
 		ptr.mlx = mlx_init();
 		ptr.win = mlx_new_window(ptr.mlx, 1200, 600, ft_itoa(ac));
-
-		draw_line(100, 100, 100, 0, ptr.mlx, ptr.win);
-		draw_line(100, 100, 200, 0, ptr.mlx, ptr.win);
-		draw_line(100, 100, 200, 100, ptr.mlx, ptr.win);
-		draw_line(100, 100, 200, 200, ptr.mlx, ptr.win);
-		draw_line(100, 100, 100, 200, ptr.mlx, ptr.win);
-		draw_line(100, 100, 0, 200, ptr.mlx, ptr.win);
-		draw_line(100, 100, 0, 100, ptr.mlx, ptr.win);
-		draw_line(100, 100, 0, 0, ptr.mlx, ptr.win);
-
-		draw_line(100, 100, 150, 0, ptr.mlx, ptr.win);
-		draw_line(100, 100, 200, 50, ptr.mlx, ptr.win);
-		draw_line(100, 100, 200, 150, ptr.mlx, ptr.win);
-		draw_line(100, 100, 150, 200, ptr.mlx, ptr.win);
-		draw_line(100, 100, 50, 200, ptr.mlx, ptr.win);
-		draw_line(100, 100, 0, 150, ptr.mlx, ptr.win);
-		draw_line(100, 100, 0, 50, ptr.mlx, ptr.win);
-		draw_line(100, 100, 50, 0, ptr.mlx, ptr.win);
-
-		mlx_hook(ptr.win, 2, 5, call_hookers, arr);
-		mlx_hook(ptr.win, 17, 1L << 17, exit_mouse, arr);
+		ptr.s_pix = &arr;
+		//resolve how to properly use hook smth go wrong
+		mlx_hook(ptr.win, 2, 5, call_hookers, &ptr);
+		mlx_hook(ptr.win, 17, 1L << 17, exit_mouse, &ptr);
 		mlx_loop(ptr.mlx);
 	}
 	else

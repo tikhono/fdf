@@ -10,24 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <printf.h>
 #include "main.h"
 
-void	rot(int key, t_pix ***arr)
+void	rot(int key, t_mlx ptr)
 {}
 
-void	move(int key, t_pix ***arr)
+void	move(int key, t_mlx ptr)
 {}
 
-void	zoom(int key, t_pix ***arr)
+void	zoom(int key, t_mlx ptr)
 {}
 
-int		call_hookers(int key, t_pix ***arr)
+int		call_hookers(int key, t_mlx ptr)
 {
+	put_map(ptr);
 	if ((0 <= key && key <= 2) || (12 <= key && key <= 14))
-		rot(key, arr);
+		rot(key, ptr);
 	if (123 <= key && key <= 126)
-		move(key, arr);
+		move(key, ptr);
 	if (key == 3 || key == 15)
-		zoom(key, arr);
+		zoom(key, ptr);
 	return (0);
 }

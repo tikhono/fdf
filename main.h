@@ -10,20 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef PARSER_H
 # define PARSER_H
 # define FACTOR 3.9015625
-
-typedef struct		s_mlx
-{
-	void 			*mlx;
-	void			*win;
-	void			*img;
-	int 			a;
-	int 			b;
-	int 			c;
-}					t_mlx;
 
 typedef struct		s_pix
 {
@@ -34,13 +23,21 @@ typedef struct		s_pix
 	int				color;
 }					t_pix;
 
+typedef struct		s_mlx
+{
+	void 			*mlx;
+	void			*win;
+	void			*img;
+	int 			a;
+	int 			b;
+	int 			c;
+	t_pix			****s_pix;
+}					t_mlx;
+
 t_pix	***parse(char *file);
-int		ipart(double x);
-int		rpart(double x);
-double	fpart(double x);
-double	rfpart(double x);
 void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win);
-int		call_hookers(int key, t_pix ***arr);
+void 	put_map(t_mlx ptr);
+int		call_hookers(int key, t_mlx ptr);
 t_pix	***erase(t_pix ***arr);
 
 #endif
