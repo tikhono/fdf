@@ -24,7 +24,6 @@ void	zoom(int key, t_mlx ptr)
 
 int		call_hookers(int key, t_mlx *ptr)
 {
-	put_map(*ptr);
 	if ((0 <= key && key <= 2) || (12 <= key && key <= 14))
 		rot(key, *ptr);
 	if (123 <= key && key <= 126)
