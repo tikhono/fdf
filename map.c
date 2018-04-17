@@ -14,6 +14,21 @@
 
 void 	put_map(t_mlx ptr)
 {
+	int		i;
+	int		j;
+
+	i = 0;
+	while (ptr.s_pix[i] != NULL)
+	{
+		j = 0;
+		while (ptr.s_pix[i][j])
+		{
+			draw_line();
+			draw_line();
+			++j;
+		}
+		++i;
+	}
 	//using line draw map
 
 	draw_line(100, 100, 100, 0, ptr.mlx, ptr.win);

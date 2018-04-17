@@ -10,11 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <printf.h>
 #include "main.h"
 
 void	rot(int key, t_mlx ptr)
-{}
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (ptr.s_pix[i] != NULL)
+	{
+		j = 0;
+		while (ptr.s_pix[i][j])
+		{
+			//count new z y z
+			++j;
+		}
+		++i;
+	}
+	put_map(ptr);
+}
 
 void	move(int key, t_mlx ptr)
 {}

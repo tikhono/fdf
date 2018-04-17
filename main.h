@@ -13,6 +13,10 @@
 #ifndef PARSER_H
 # define PARSER_H
 # define FACTOR 3.9015625
+# include <mlx.h>
+# include <unistd.h>
+# include "main.h"
+# include "libft/libft.h"
 
 typedef struct		s_pix
 {

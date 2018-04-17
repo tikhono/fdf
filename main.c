@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <unistd.h>
 #include "main.h"
-#include "libft/libft.h"
 
 int 	exit_mouse(t_mlx *ptr)
 {
