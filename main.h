@@ -31,7 +31,7 @@ typedef struct		s_mlx
 	int 			a;
 	int 			b;
 	int 			c;
-	t_pix			****s_pix;
+	t_pix			***s_pix;
 }					t_mlx;
 
 t_pix	***parse(char *file);
