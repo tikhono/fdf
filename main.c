@@ -16,9 +16,9 @@
 #include "libft/libft.h"
 #include "printf.h"
 
-int 	exit_mouse(t_mlx ptr)
+int 	exit_mouse(t_mlx *ptr)
 {
-	erase(ptr.s_pix);
+	erase(ptr->s_pix);
 	exit(0);
 }
 

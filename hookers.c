@@ -22,14 +22,14 @@ void	move(int key, t_mlx ptr)
 void	zoom(int key, t_mlx ptr)
 {}
 
-int		call_hookers(int key, t_mlx ptr)
+int		call_hookers(int key, t_mlx *ptr)
 {
-	put_map(ptr);
+	put_map(*ptr);
 	if ((0 <= key && key <= 2) || (12 <= key && key <= 14))
-		rot(key, ptr);
+		rot(key, *ptr);
 	if (123 <= key && key <= 126)
-		move(key, ptr);
+		move(key, *ptr);
 	if (key == 3 || key == 15)
-		zoom(key, ptr);
+		zoom(key, *ptr);
 	return (0);
 }

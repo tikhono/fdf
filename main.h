@@ -37,7 +37,7 @@ typedef struct		s_mlx
 t_pix	***parse(char *file);
 void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win);
 void 	put_map(t_mlx ptr);
-int		call_hookers(int key, t_mlx ptr);
+int		call_hookers(int key, t_mlx *ptr);
 t_pix	***erase(t_pix ***arr);
 
 #endif

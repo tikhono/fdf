@@ -123,6 +123,7 @@ t_pix	***parse(char *file)
 	if (fd < 0 || rows <= 0)
 		return (0);
 	arr = (t_pix ***)malloc(sizeof(t_pix **) * (rows + 2));
+	__builtin_printf("%p", arr);
 	arr[rows + 1] = NULL;
 	return (fill(arr, fd, 0, 0));
 }
