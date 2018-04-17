@@ -18,7 +18,7 @@ void 	put_map(t_mlx ptr)
 	int		j;
 
 	i = 0;
-	while (ptr.s_pix[i] != NULL)
+	while (ptr.s_pix[i] != NULL && ptr.s_pix[i + 1])
 	{
 		j = 0;
 		while (ptr.s_pix[i][j] != NULL && ptr.s_pix[i][j + 1] != NULL && ptr.s_pix[i + 1][j] != NULL)

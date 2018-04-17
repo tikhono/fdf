@@ -64,6 +64,9 @@ int		put_pix(t_pix ***arr, char **temp, int i, int j)
 			return (1);
 		arr[i][j] = (t_pix *)malloc(sizeof(t_pix));
 		arr[i][j]->oz = ft_atoi(temp[0]);
+		arr[i][j]->x = j;
+		arr[i][j]->y = i;
+		arr[i][j]->z = arr[i][j]->oz;
 		if (temp[1] != NULL)
 		{
 			if ((!ft_isnum(temp[1], 16)) && temp[1][0] != '\0')
