@@ -21,10 +21,10 @@ void 	put_map(t_mlx ptr)
 	while (ptr.s_pix[i] != NULL)
 	{
 		j = 0;
-		while (ptr.s_pix[i][j])
+		while (ptr.s_pix[i][j] != NULL && ptr.s_pix[i][j + 1] != NULL && ptr.s_pix[i + 1][j] != NULL)
 		{
-			draw_line();
-			draw_line();
+			draw_line(ptr.s_pix[i][j]->x, ptr.s_pix[i][j]->y, ptr.s_pix[i][j + 1]->x, ptr.s_pix[i][j + 1]->y, ptr.mlx, ptr.win);
+			draw_line(ptr.s_pix[i][j]->x, ptr.s_pix[i][j]->y, ptr.s_pix[i + 1][j]->x, ptr.s_pix[i + 1][j]->y, ptr.mlx, ptr.win);
 			++j;
 		}
 		++i;
