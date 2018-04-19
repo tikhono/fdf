@@ -37,6 +37,7 @@ int		main(int ac, char **av)
 		ptr.mlx = mlx_init();
 		ptr.win = mlx_new_window(ptr.mlx, 1200, 600, ft_itoa(ac));
 		ptr.s_pix = arr;
+		ptr.scale = 10;
 		put_map(ptr);
 		mlx_hook(ptr.win, 2, 5, call_hookers, &ptr);
 		mlx_hook(ptr.win, 17, 1L << 17, exit_mouse, &ptr);

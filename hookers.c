@@ -62,31 +62,16 @@ void	move(int key, t_mlx ptr)
 	put_map(ptr);
 }
 
-void	zoom(int key, t_mlx ptr)
+void	zoom(int key, t_mlx *ptr)
 {
-	int i;
-	int j;
-	int mx;
-	int my;
-
-	mx = 1;
-	my = 1;
+	__builtin_printf("%d\n", ptr->scale);
 	if (key == 3)
-		mx = 2;
-	if (key == 15)
-		my = 2;
-	i = 0;
-	while (ptr.s_pix[i] != NULL) {
-		j = 0;
-		while (ptr.s_pix[i][j] != NULL) {
-			ptr.s_pix[i][j]->x *= mx;
-			ptr.s_pix[i][j]->y *= my;
-			++j;
-		}
-		++i;
-	}
-	mlx_clear_window(ptr.mlx, ptr.win);
-	put_map(ptr);
+		ptr->scale += 1;
+	if (key == 15 && ptr->scale != 1)
+		ptr->scale -= 1;
+	__builtin_printf("%d\n", ptr->scale);
+	mlx_clear_window(ptr->mlx, ptr->win);
+	put_map(*ptr);
 }
 
 int		call_hookers(int key, t_mlx *ptr)
@@ -96,6 +81,6 @@ int		call_hookers(int key, t_mlx *ptr)
 	if (123 <= key && key <= 126)
 		move(key, *ptr);
 	if (key == 3 || key == 15)
-		zoom(key, *ptr);
+		zoom(key, ptr);
 	return (0);
 }

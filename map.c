@@ -16,9 +16,9 @@ void	put_map(t_mlx ptr)
 {
 	int		i;
 	int		j;
-	int		a;
+	int 	a;
 
-	a = 10;
+	a = ptr.scale;
 	i = 0;
 	j = 0;
 	while (ptr.s_pix[i] != NULL && ptr.s_pix[i + 1])

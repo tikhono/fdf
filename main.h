@@ -36,6 +36,7 @@ typedef struct		s_mlx
 	int 			a;
 	int 			b;
 	int 			c;
+	int 			scale;
 	t_pix			***s_pix;
 }					t_mlx;
 
