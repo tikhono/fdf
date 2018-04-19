@@ -14,6 +14,7 @@
 # define PARSER_H
 # define FACTOR 3.9015625
 # include <mlx.h>
+# include <math.h>
 # include <unistd.h>
 # include "main.h"
 # include "libft/libft.h"

@@ -16,6 +16,9 @@ void	rot(int key, t_mlx ptr)
 {
 	int		i;
 	int		j;
+	int 	ax;
+	int 	ay;
+	int 	az;
 
 	i = 0;
 	while (ptr.s_pix[i] != NULL)
@@ -23,7 +26,7 @@ void	rot(int key, t_mlx ptr)
 		j = 0;
 		while (ptr.s_pix[i][j])
 		{
-			//count new z y z
+			//ptr.s_pix[i][j]->x = cos();
 			++j;
 		}
 		++i;
@@ -32,7 +35,39 @@ void	rot(int key, t_mlx ptr)
 }
 
 void	move(int key, t_mlx ptr)
-{}
+{
+	int		i;
+	int		j;
+	int 	mx;
+	int 	my;
+
+	if (key == 123)
+		mx = -1;
+	else if (key == 124)
+		mx = 1;
+	else
+		mx = 0;
+	if (key == 125)
+		my = -1;
+	else if (key == 126)
+		my = 1;
+	else
+		my = 0;
+	i = 0;
+	while (ptr.s_pix[i] != NULL)
+	{
+		j = 0;
+		while (ptr.s_pix[i][j] != NULL)
+		{
+			ptr.s_pix[i][j]->x += mx;
+			ptr.s_pix[i][j]->y += my;
+			++j;
+		}
+		++i;
+	}
+	mlx_clear_window(ptr.mlx, ptr.win);
+	put_map(ptr);
+}
 
 void	zoom(int key, t_mlx ptr)
 {}
