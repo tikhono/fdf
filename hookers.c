@@ -41,18 +41,16 @@ void	move(int key, t_mlx ptr)
 	int 	mx;
 	int 	my;
 
+	mx = 0;
+	my = 0;
 	if (key == 123)
 		mx = -1;
-	else if (key == 124)
+	if (key == 124)
 		mx = 1;
-	else
-		mx = 0;
 	if (key == 125)
 		my = -1;
-	else if (key == 126)
+	if (key == 126)
 		my = 1;
-	else
-		my = 0;
 	i = 0;
 	while (ptr.s_pix[i] != NULL)
 	{
