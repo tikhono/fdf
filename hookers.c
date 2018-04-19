@@ -26,7 +26,7 @@ void	rot(int key, t_mlx ptr)
 		j = 0;
 		while (ptr.s_pix[i][j])
 		{
-			//ptr.s_pix[i][j]->x = cos();
+			ptr.s_pix[i][j]->x = cos();
 			++j;
 		}
 		++i;
@@ -64,12 +64,10 @@ void	move(int key, t_mlx ptr)
 
 void	zoom(int key, t_mlx *ptr)
 {
-	__builtin_printf("%d\n", ptr->scale);
 	if (key == 3)
 		ptr->scale += 1;
 	if (key == 15 && ptr->scale != 1)
 		ptr->scale -= 1;
-	__builtin_printf("%d\n", ptr->scale);
 	mlx_clear_window(ptr->mlx, ptr->win);
 	put_map(*ptr);
 }
