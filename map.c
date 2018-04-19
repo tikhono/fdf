@@ -12,11 +12,11 @@
 
 #include "main.h"
 
-void 	put_map(t_mlx ptr)
+void	put_map(t_mlx ptr)
 {
 	int		i;
 	int		j;
-	int 	a;
+	int		a;
 
 	a = 50;
 	i = 0;
@@ -38,23 +38,4 @@ void 	put_map(t_mlx ptr)
 		draw_line(ptr.s_pix[i][j]->x * a, ptr.s_pix[i][j]->y * a, ptr.s_pix[i][j + 1]->x * a, ptr.s_pix[i][j + 1]->y * a, ptr.mlx, ptr.win);
 		++j;
 	}
-
-//		draw_line(100, 100, 100, 0, ptr.mlx, ptr.win);
-//		draw_line(100, 100, 200, 0, ptr.mlx, ptr.win);
-//		draw_line(100, 100, 200, 100, ptr.mlx, ptr.win);
-//		draw_line(100, 100, 200, 200, ptr.mlx, ptr.win);
-//		draw_line(100, 100, 100, 200, ptr.mlx, ptr.win);
-//		draw_line(100, 100, 0, 200, ptr.mlx, ptr.win);
-//		draw_line(100, 100, 0, 100, ptr.mlx, ptr.win);
-//		draw_line(100, 100, 0, 0, ptr.mlx, ptr.win);
-//
-//		draw_line(100, 100, 150, 0, ptr.mlx, ptr.win);
-//		draw_line(100, 100, 200, 50, ptr.mlx, ptr.win);
-//		draw_line(100, 100, 200, 150, ptr.mlx, ptr.win);
-//		draw_line(100, 100, 150, 200, ptr.mlx, ptr.win);
-//		draw_line(100, 100, 50, 200, ptr.mlx, ptr.win);
-//		draw_line(100, 100, 0, 150, ptr.mlx, ptr.win);
-//		draw_line(100, 100, 0, 50, ptr.mlx, ptr.win);
-//		draw_line(100, 100, 50, 0, ptr.mlx, ptr.win);
-
 }

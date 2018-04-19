@@ -84,3 +84,22 @@ int		main(int ac, char **av)
 //	0xA6FF0000
 //	0xBFFF0000
 //	0xD9FF0000 //dark
+
+
+//	draw_line(100, 100, 100, 0, ptr.mlx, ptr.win);
+//	draw_line(100, 100, 200, 0, ptr.mlx, ptr.win);
+//	draw_line(100, 100, 200, 100, ptr.mlx, ptr.win);
+//	draw_line(100, 100, 200, 200, ptr.mlx, ptr.win);
+//	draw_line(100, 100, 100, 200, ptr.mlx, ptr.win);
+//	draw_line(100, 100, 0, 200, ptr.mlx, ptr.win);
+//	draw_line(100, 100, 0, 100, ptr.mlx, ptr.win);
+//	draw_line(100, 100, 0, 0, ptr.mlx, ptr.win);
+//
+//	draw_line(100, 100, 150, 0, ptr.mlx, ptr.win);
+//	draw_line(100, 100, 200, 50, ptr.mlx, ptr.win);
+//	draw_line(100, 100, 200, 150, ptr.mlx, ptr.win);
+//	draw_line(100, 100, 150, 200, ptr.mlx, ptr.win);
+//	draw_line(100, 100, 50, 200, ptr.mlx, ptr.win);
+//	draw_line(100, 100, 0, 150, ptr.mlx, ptr.win);
+//	draw_line(100, 100, 0, 50, ptr.mlx, ptr.win);
+//	draw_line(100, 100, 50, 0, ptr.mlx, ptr.win);
