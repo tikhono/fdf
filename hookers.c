@@ -31,6 +31,7 @@ void	rot(int key, t_mlx ptr)
 		}
 		++i;
 	}
+	mlx_clear_window(ptr.mlx, ptr.win);
 	put_map(ptr);
 }
 
@@ -38,19 +39,13 @@ void	move(int key, t_mlx ptr)
 {
 	int		i;
 	int		j;
-	int 	mx;
-	int 	my;
+	int		mx;
+	int		my;
 
-	mx = 0;
-	my = 0;
-	if (key == 123)
-		mx = -1;
-	if (key == 124)
-		mx = 1;
-	if (key == 125)
-		my = -1;
-	if (key == 126)
-		my = 1;
+	mx = key == 123 ? -1 : 0;
+	mx = key == 124 ? 1 : mx;
+	my = key == 125 ? -1 : 0;
+	my = key == 126 ? 1 : my;
 	i = 0;
 	while (ptr.s_pix[i] != NULL)
 	{
@@ -68,7 +63,31 @@ void	move(int key, t_mlx ptr)
 }
 
 void	zoom(int key, t_mlx ptr)
-{}
+{
+	int i;
+	int j;
+	int mx;
+	int my;
+
+	mx = 1;
+	my = 1;
+	if (key == 3)
+		mx = 2;
+	if (key == 15)
+		my = 2;
+	i = 0;
+	while (ptr.s_pix[i] != NULL) {
+		j = 0;
+		while (ptr.s_pix[i][j] != NULL) {
+			ptr.s_pix[i][j]->x *= mx;
+			ptr.s_pix[i][j]->y *= my;
+			++j;
+		}
+		++i;
+	}
+	mlx_clear_window(ptr.mlx, ptr.win);
+	put_map(ptr);
+}
 
 int		call_hookers(int key, t_mlx *ptr)
 {
