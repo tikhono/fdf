@@ -32,9 +32,9 @@ typedef struct		s_mlx
 {
 	void 			*mlx;
 	void			*win;
-	int 			ax;
-	int 			ay;
-	int 			az;
+	double 			ax;
+	double 			ay;
+	double 			az;
 	int 			scale;
 	t_pix			***s_pix;
 }					t_mlx;

@@ -10,37 +10,60 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <printf.h>
 #include "main.h"
 
-void	rot(int key, t_mlx ptr)
+void	transform(t_mlx ptr)
 {
 	int		i;
 	int		j;
-	int 	a;
+	int 	temp;
 
-	a = 5;
 	i = 0;
 	while (ptr.s_pix[i] != NULL)
 	{
 		j = 0;
 		while (ptr.s_pix[i][j])
 		{
-			if (key == 0)
-				ptr.ax += a;
-			if (key == 1)
-				ptr.ay += a;
-			if (key == 2)
-				ptr.az += a;
-			if (key == 12)
-				ptr.ax -= a;
-			if (key == 13)
-				ptr.ay -= a;
-			if (key == 14)
-				ptr.az -= a;
+			//x
+			temp = ptr.s_pix[i][j]->y;
+			ptr.s_pix[i][j]->y = (int) (temp * cos(ptr.ax) + ptr.s_pix[i][j]->z * sin(ptr.ax));
+			ptr.s_pix[i][j]->z = (int) (ptr.s_pix[i][j]->z * cos(ptr.ax) - temp * sin(ptr.ax));
+			//y
+			temp = ptr.s_pix[i][j]->x;
+			ptr.s_pix[i][j]->x = (int) (temp * cos(ptr.ay) + ptr.s_pix[i][j]->z * sin(ptr.ay));
+			ptr.s_pix[i][j]->z = (int) (ptr.s_pix[i][j]->z * cos(ptr.ay) - temp * sin(ptr.ay));
+			//z
+			temp = ptr.s_pix[i][j]->x;
+			ptr.s_pix[i][j]->x = (int) (temp * cos(ptr.az) - ptr.s_pix[i][j]->y * sin(ptr.az));
+			ptr.s_pix[i][j]->y = (int) (ptr.s_pix[i][j]->y * cos(ptr.az) + temp * sin(ptr.az));
 			++j;
 		}
 		++i;
 	}
+}
+
+void	rot(int key, t_mlx ptr)
+{
+	int		i;
+	int		j;
+	double 	a;
+
+	a = 10 * M_PI / 180;
+	i = 0;
+	if (key == 0)
+		ptr.ax += a;
+	if (key == 1)
+		ptr.ay += a;
+	if (key == 2)
+		ptr.az += a;
+	if (key == 12)
+		ptr.ax -= a;
+	if (key == 13)
+		ptr.ay -= a;
+	if (key == 14)
+		ptr.az -= a;
+	transform(ptr);
 	put_map(ptr);
 }
 
