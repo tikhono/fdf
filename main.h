@@ -32,6 +32,10 @@ typedef struct		s_mlx
 {
 	void 			*mlx;
 	void			*win;
+	int				h_min;
+	int 			h_max;
+	int 			w_min;
+	int 			w_max;
 	double 			ax;
 	double 			ay;
 	double 			az;

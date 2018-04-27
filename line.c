@@ -40,7 +40,7 @@ void	put_pixel(int x, int y, double c, void *mlx, void *win)
 
 	alpha = (int)((c * 1001) / FACTOR);
 	alpha <<= 24;
-	argb = 0x00F90000;
+	argb = 0x00FFFFFF;
 	argb += alpha;
 	mlx_pixel_put(mlx, win, x, y, argb);
 }

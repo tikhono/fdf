@@ -12,6 +12,29 @@
 
 #include "main.h"
 
+void	find_center(t_mlx ptr)
+{
+	int		i;
+	int		j;
+
+	ptr.h_min = 0;
+	ptr.h_max = 0;
+	ptr.w_min = 0;
+	ptr.w_max = 0;
+	i = 0;
+	while (ptr.s_pix[i] != NULL)
+	{
+		j = 0;
+		while (ptr.s_pix[i][j] != NULL)
+		{
+			ptr.s_pix[i][j]->x < ptr.w_max;
+			++j;
+		}
+		++i;
+	}
+
+}
+
 void	put_map(t_mlx ptr)
 {
 	int		i;
