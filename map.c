@@ -21,6 +21,7 @@ void	put_map(t_mlx ptr)
 	a = ptr.scale;
 	i = 0;
 	j = 0;
+	mlx_clear_window(ptr.mlx, ptr.win);
 	while (ptr.s_pix[i] != NULL && ptr.s_pix[i + 1])
 	{
 		while (ptr.s_pix[i][j] != NULL && ptr.s_pix[i][j + 1] != NULL && ptr.s_pix[i + 1][j] != NULL)
