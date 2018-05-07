@@ -57,7 +57,6 @@ void	rot(int key, t_mlx *ptr)
 	if (key == 14)
 		ptr->az -= a;
 	transform(ptr);
-	printf("%f\n", ptr->ax);
 	put_map(*ptr);
 }
 
