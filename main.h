@@ -21,10 +21,10 @@
 
 typedef struct		s_pix
 {
-	int				x;
-	int				y;	
-	int				z;
-	int				oz;
+	double			x;
+	double			y;
+	double			z;
+	double			oz;
 	int				color;
 }					t_pix;
 
@@ -32,13 +32,15 @@ typedef struct		s_mlx
 {
 	void 			*mlx;
 	void			*win;
-	int				h_min;
-	int 			h_max;
-	int 			w_min;
-	int 			w_max;
+	double			h_min;
+	double			h_max;
+	double 			w_min;
+	double			w_max;
 	double 			ax;
 	double 			ay;
 	double 			az;
+	double 			mx;
+	double 			my;
 	int 			scale;
 	t_pix			***s_pix;
 }					t_mlx;
