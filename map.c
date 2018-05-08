@@ -51,8 +51,8 @@ void	take_center(t_mlx *ptr)
 	//find_center(ptr);
 	//x = (ptr->w_max - ptr->w_min) / 2;
 	//y = (ptr->h_max - ptr->h_min) / 2;
-	x = 9;
-	y = 5.5;
+	x = -90.0;
+	y = -55.0;
 	i = 0;
 	while (ptr->s_pix[i] != NULL)
 	{
@@ -76,11 +76,12 @@ void	put_map(t_mlx ptr)
 	double 	x;
 	double	y;
 
+	find_center(&ptr);
 	a = ptr.scale;
 	i = 0;
 	j = 0;
-	x = 600 + ptr.mx;
-	y = 300 + ptr.my;
+	x = 600 + ptr.mx - (ptr.w_max + ptr.w_min) * ptr.scale / 2;
+	y = 300 + ptr.my - (ptr.h_max + ptr.h_min) * ptr.scale / 2;
 	mlx_clear_window(ptr.mlx, ptr.win);
 	while (ptr.s_pix[i] != NULL && ptr.s_pix[i + 1])
 	{
