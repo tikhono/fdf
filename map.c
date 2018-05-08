@@ -41,6 +41,33 @@ void	find_center(t_mlx *ptr)
 	}
 }
 
+void	take_center(t_mlx *ptr)
+{
+	int		i;
+	int		j;
+	double	x;
+	double	y;
+
+	//find_center(ptr);
+	//x = (ptr->w_max - ptr->w_min) / 2;
+	//y = (ptr->h_max - ptr->h_min) / 2;
+	x = 9;
+	y = 5.5;
+	i = 0;
+	while (ptr->s_pix[i] != NULL)
+	{
+		j = 0;
+		while (ptr->s_pix[i][j] != NULL)
+		{
+			ptr->s_pix[i][j]->x -= x;
+			ptr->s_pix[i][j]->y -= y;
+			++j;
+		}
+		++i;
+	}
+}
+
+
 void	put_map(t_mlx ptr)
 {
 	int		i;
@@ -52,8 +79,8 @@ void	put_map(t_mlx ptr)
 	a = ptr.scale;
 	i = 0;
 	j = 0;
-	x = 600 - (ptr.w_max - ptr.w_min) * ptr.scale / 2 + ptr.mx;
-	y = 300 - (ptr.h_max - ptr.h_min) * ptr.scale / 2 + ptr.my;
+	x = 600 + ptr.mx;
+	y = 300 + ptr.my;
 	mlx_clear_window(ptr.mlx, ptr.win);
 	while (ptr.s_pix[i] != NULL && ptr.s_pix[i + 1])
 	{

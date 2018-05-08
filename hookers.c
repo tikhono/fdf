@@ -19,17 +19,17 @@ void	transform(t_mlx *ptr)
 	int		j;
 	double	temp;
 
-	//find_center(ptr);
+	take_center(ptr);
 	i = 0;
 	while (ptr->s_pix[i] != NULL)
 	{
 		j = 0;
 		while (ptr->s_pix[i][j])
 		{
-			ptr->s_pix[i][j]->y = (i - ptr->h_max + ptr->h_min) * cos(ptr->ax) + ptr->s_pix[i][j]->oz * sin(ptr->ax);
-			ptr->s_pix[i][j]->z = ptr->s_pix[i][j]->oz * cos(ptr->ax) - (i - ptr->h_max + ptr->h_min) * sin(ptr->ax);
-			ptr->s_pix[i][j]->x = (j - ptr->w_max + ptr->h_min) * cos(ptr->ay) + ptr->s_pix[i][j]->z * sin(ptr->ay);
-			ptr->s_pix[i][j]->z = ptr->s_pix[i][j]->z * cos(ptr->ay) - (j- ptr->w_max + ptr->h_min) * sin(ptr->ay);
+			ptr->s_pix[i][j]->y = (double) (i) * cos(ptr->ax) + ptr->s_pix[i][j]->oz * sin(ptr->ax);
+			ptr->s_pix[i][j]->z = ptr->s_pix[i][j]->oz * cos(ptr->ax) - (double) (i) * sin(ptr->ax);
+			ptr->s_pix[i][j]->x = (double) (j) * cos(ptr->ay) + ptr->s_pix[i][j]->z * sin(ptr->ay);
+			ptr->s_pix[i][j]->z = ptr->s_pix[i][j]->z * cos(ptr->ay) - (double) (j) * sin(ptr->ay);
 			temp = ptr->s_pix[i][j]->x;
 			ptr->s_pix[i][j]->x = temp * cos(ptr->az) - ptr->s_pix[i][j]->y * sin(ptr->az);
 			ptr->s_pix[i][j]->y = ptr->s_pix[i][j]->y * cos(ptr->az) + temp * sin(ptr->az);
