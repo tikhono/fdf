@@ -51,8 +51,8 @@ void	take_center(t_mlx *ptr)
 	//find_center(ptr);
 	//x = (ptr->w_max - ptr->w_min) / 2;
 	//y = (ptr->h_max - ptr->h_min) / 2;
-	x = -90.0;
-	y = -55.0;
+	x = 9.0;
+	y = 5.0;
 	i = 0;
 	while (ptr->s_pix[i] != NULL)
 	{

@@ -19,7 +19,7 @@ void	transform(t_mlx *ptr)
 	int		j;
 	double	temp;
 
-	take_center(ptr);
+//	take_center(ptr);
 	i = 0;
 	while (ptr->s_pix[i] != NULL)
 	{
