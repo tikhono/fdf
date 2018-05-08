@@ -17,24 +17,24 @@ void	find_center(t_mlx *ptr)
 	int		i;
 	int		j;
 
-	ptr->h_min = ptr->s_pix[0][0]->y * ptr->scale;
-	ptr->h_max = ptr->s_pix[0][0]->y * ptr->scale;
-	ptr->w_min = ptr->s_pix[0][0]->x * ptr->scale;
-	ptr->w_max = ptr->s_pix[0][0]->x * ptr->scale;
+	ptr->h_min = ptr->s_pix[0][0]->y;
+	ptr->h_max = ptr->s_pix[0][0]->y;
+	ptr->w_min = ptr->s_pix[0][0]->x;
+	ptr->w_max = ptr->s_pix[0][0]->x;
 	i = 0;
 	while (ptr->s_pix[i] != NULL)
 	{
 		j = 0;
 		while (ptr->s_pix[i][j] != NULL)
 		{
-			ptr->h_min = (ptr->s_pix[i][j]->y * ptr->scale < ptr->h_min ? \
-					ptr->s_pix[i][j]->y * ptr->scale : ptr->h_min);
-			ptr->h_max = (ptr->s_pix[i][j]->y * ptr->scale > ptr->h_max ? \
-					ptr->s_pix[i][j]->y * ptr->scale : ptr->h_max);
-			ptr->w_min = (ptr->s_pix[i][j]->x * ptr->scale < ptr->w_min ? \
-					ptr->s_pix[i][j]->x * ptr->scale : ptr->w_min);
-			ptr->w_max = (ptr->s_pix[i][j]->x * ptr->scale > ptr->w_max ? \
-					ptr->s_pix[i][j]->x * ptr->scale : ptr->w_max);
+			ptr->h_min = (ptr->s_pix[i][j]->y < ptr->h_min ? \
+					ptr->s_pix[i][j]->y : ptr->h_min);
+			ptr->h_max = (ptr->s_pix[i][j]->y > ptr->h_max ? \
+					ptr->s_pix[i][j]->y : ptr->h_max);
+			ptr->w_min = (ptr->s_pix[i][j]->x < ptr->w_min ? \
+					ptr->s_pix[i][j]->x : ptr->w_min);
+			ptr->w_max = (ptr->s_pix[i][j]->x > ptr->w_max ? \
+					ptr->s_pix[i][j]->x : ptr->w_max);
 			++j;
 		}
 		++i;
@@ -52,9 +52,8 @@ void	put_map(t_mlx ptr)
 	a = ptr.scale;
 	i = 0;
 	j = 0;
-	find_center(&ptr);
-	x = 600 - (ptr.w_max - ptr.w_min) / 2 + ptr.mx;
-	y = 300 - (ptr.h_max - ptr.h_min) / 2 + ptr.my;
+	x = 600 - (ptr.w_max - ptr.w_min) * ptr.scale / 2 + ptr.mx;
+	y = 300 - (ptr.h_max - ptr.h_min) * ptr.scale / 2 + ptr.my;
 	mlx_clear_window(ptr.mlx, ptr.win);
 	while (ptr.s_pix[i] != NULL && ptr.s_pix[i + 1])
 	{
