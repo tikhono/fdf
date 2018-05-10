@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <printf.h>
 #include "main.h"
 
 void	find_center(t_mlx *ptr)
@@ -41,33 +42,6 @@ void	find_center(t_mlx *ptr)
 	}
 }
 
-void	take_center(t_mlx *ptr)
-{
-	int		i;
-	int		j;
-	double	x;
-	double	y;
-
-	//find_center(ptr);
-	//x = (ptr->w_max - ptr->w_min) / 2;
-	//y = (ptr->h_max - ptr->h_min) / 2;
-	x = 9.0;
-	y = 5.0;
-	i = 0;
-	while (ptr->s_pix[i] != NULL)
-	{
-		j = 0;
-		while (ptr->s_pix[i][j] != NULL)
-		{
-			ptr->s_pix[i][j]->x -= x;
-			ptr->s_pix[i][j]->y -= y;
-			++j;
-		}
-		++i;
-	}
-}
-
-
 void	put_map(t_mlx ptr)
 {
 	int		i;
@@ -82,6 +56,9 @@ void	put_map(t_mlx ptr)
 	j = 0;
 	x = 600 + ptr.mx - (ptr.w_max + ptr.w_min) * ptr.scale / 2;
 	y = 300 + ptr.my - (ptr.h_max + ptr.h_min) * ptr.scale / 2;
+
+	printf("\n%lf : %lf\n", x, y);
+
 	mlx_clear_window(ptr.mlx, ptr.win);
 	while (ptr.s_pix[i] != NULL && ptr.s_pix[i + 1])
 	{
