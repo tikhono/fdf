@@ -19,7 +19,7 @@ void	put_help(void)
 
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 300, 200, "HELP");
-	mlx_string_put(mlx, win, 10, 10, 0xFFFFFF, "Scroll up/down to"" zoom in/out");
+	mlx_string_put(mlx, win, 10, 10, 0xFFFFFF, "Scroll up/down to"" zoom int");
 }
 
 void	initialise(t_mlx *ptr, t_pix ***arr, int ac)
@@ -65,4 +65,3 @@ int		main(int ac, char **av)
 		ft_putstr("Invalid map");
 	return (0);
 }
-
