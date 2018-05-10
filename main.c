@@ -33,6 +33,7 @@ int		main(int ac, char **av)
 	--ac;
 	if ((arr = parse(av[ac])))
 	{
+		//from this
 		ptr.mlx = mlx_init();
 		ptr.win = mlx_new_window(ptr.mlx, 1200, 600, ft_itoa(ac));
 		ptr.s_pix = arr;
@@ -40,6 +41,7 @@ int		main(int ac, char **av)
 		ptr.ax = 0;
 		ptr.ay = 0;
 		ptr.az = 0;
+		//to this cutout to finction initialise
 		put_map(ptr, ptr.scale);
 		mlx_hook(ptr.win, 2, 5, call_hookers, &ptr);
 		mlx_hook(ptr.win, 17, 1L << 17, exit_mouse, &ptr);
@@ -89,20 +91,3 @@ int		main(int ac, char **av)
 //	0xD9FF0000 //dark
 
 
-//	draw_line(100, 100, 100, 0, ptr.mlx, ptr.win);
-//	draw_line(100, 100, 200, 0, ptr.mlx, ptr.win);
-//	draw_line(100, 100, 200, 100, ptr.mlx, ptr.win);
-//	draw_line(100, 100, 200, 200, ptr.mlx, ptr.win);
-//	draw_line(100, 100, 100, 200, ptr.mlx, ptr.win);
-//	draw_line(100, 100, 0, 200, ptr.mlx, ptr.win);
-//	draw_line(100, 100, 0, 100, ptr.mlx, ptr.win);
-//	draw_line(100, 100, 0, 0, ptr.mlx, ptr.win);
-//
-//	draw_line(100, 100, 150, 0, ptr.mlx, ptr.win);
-//	draw_line(100, 100, 200, 50, ptr.mlx, ptr.win);
-//	draw_line(100, 100, 200, 150, ptr.mlx, ptr.win);
-//	draw_line(100, 100, 150, 200, ptr.mlx, ptr.win);
-//	draw_line(100, 100, 50, 200, ptr.mlx, ptr.win);
-//	draw_line(100, 100, 0, 150, ptr.mlx, ptr.win);
-//	draw_line(100, 100, 0, 50, ptr.mlx, ptr.win);
-//	draw_line(100, 100, 50, 0, ptr.mlx, ptr.win);
