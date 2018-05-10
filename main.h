@@ -25,29 +25,28 @@ typedef struct		s_pix
 	double			y;
 	double			z;
 	double			oz;
-	int				color;
 }					t_pix;
 
 typedef struct		s_mlx
 {
-	void 			*mlx;
+	void			*mlx;
 	void			*win;
 	double			h_min;
 	double			h_max;
-	double 			w_min;
+	double			w_min;
 	double			w_max;
-	double 			ax;
-	double 			ay;
-	double 			az;
-	double 			mx;
-	double 			my;
-	int 			scale;
+	double			ax;
+	double			ay;
+	double			az;
+	double			mx;
+	double			my;
+	int				scale;
 	t_pix			***s_pix;
 }					t_mlx;
 
 t_pix	***parse(char *file);
 void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win);
-void 	put_map(t_mlx ptr, int a);
+void	put_map(t_mlx ptr, int a);
 int		call_hookers(int key, t_mlx *ptr);
 t_pix	***erase(t_pix ***arr);
 

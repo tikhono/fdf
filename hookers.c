@@ -26,13 +26,13 @@ void	transform(t_mlx *ptr)
 		while (ptr->s_pix[i][++j])
 		{
 			ptr->s_pix[i][j]->y = \
-			(double) (i) * cos(ptr->ax) + ptr->s_pix[i][j]->oz * sin(ptr->ax);
+			(double)(i) * cos(ptr->ax) + ptr->s_pix[i][j]->oz * sin(ptr->ax);
 			ptr->s_pix[i][j]->z = \
-			ptr->s_pix[i][j]->oz * cos(ptr->ax) - (double) (i) * sin(ptr->ax);
+			ptr->s_pix[i][j]->oz * cos(ptr->ax) - (double)(i) * sin(ptr->ax);
 			ptr->s_pix[i][j]->x = \
-			(double) (j) * cos(ptr->ay) + ptr->s_pix[i][j]->z * sin(ptr->ay);
+			(double)(j) * cos(ptr->ay) + ptr->s_pix[i][j]->z * sin(ptr->ay);
 			ptr->s_pix[i][j]->z = \
-			ptr->s_pix[i][j]->z * cos(ptr->ay) - (double) (j) * sin(ptr->ay);
+			ptr->s_pix[i][j]->z * cos(ptr->ay) - (double)(j) * sin(ptr->ay);
 			temp = ptr->s_pix[i][j]->x;
 			ptr->s_pix[i][j]->x = \
 			temp * cos(ptr->az) - ptr->s_pix[i][j]->y * sin(ptr->az);
@@ -44,7 +44,7 @@ void	transform(t_mlx *ptr)
 
 void	rot(int key, t_mlx *ptr)
 {
-	double 	a;
+	double	a;
 
 	a = 5 * M_PI / 180;
 	if (key == 0)
