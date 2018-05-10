@@ -29,17 +29,17 @@ int		number_of_rows(int fd)
 		end = read(fd, line, 256);
 		if (end == -1)
 			return (-1);
-		line[end]= '\0';
+		line[end] = '\0';
 		res += ft_count_chars(line, "\n");
 	}
 	close(fd);
 	return (res);
 }
 
-t_pix ***erase(t_pix ***arr)
+t_pix	***erase(t_pix ***arr)
 {
-	int 	x;
-	int 	y;
+	int	x;
+	int	y;
 
 	x = 0;
 	while (arr[x])
@@ -60,7 +60,7 @@ int		put_pix(t_pix ***arr, char **temp, int i, int j)
 {
 	if (ft_num_of_rows(temp) <= 2)
 	{
-		if (!ft_isnum(temp[0],10))
+		if (!ft_isnum(temp[0], 10))
 			return (1);
 		arr[i][j] = (t_pix *)malloc(sizeof(t_pix));
 		arr[i][j]->oz = ft_atoi(temp[0]);
@@ -88,7 +88,7 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 	char	*line;
 	char	**temp;
 	char	**buf;
-	int 	rows;
+	int		rows;
 
 	while (get_next_line(fd, &line))
 	{
@@ -101,7 +101,7 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 		while (buf[j] != NULL)
 		{
 			temp = ft_strsplit(buf[j], ',');
-			if (put_pix(arr, temp,i, j))
+			if (put_pix(arr, temp, i, j))
 				return (erase(arr));
 			++j;
 		}
@@ -116,7 +116,7 @@ t_pix	***parse(char *file)
 {
 	int		fd;
 	int		rows;
-	t_pix 	***arr;
+	t_pix	***arr;
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
