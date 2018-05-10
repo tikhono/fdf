@@ -31,8 +31,7 @@ int		main(int ac, char **av)
 		else
 			break ;
 	--ac;
-	arr = parse(av[ac]);
-	if (arr)
+	if ((arr = parse(av[ac])))
 	{
 		ptr.mlx = mlx_init();
 		ptr.win = mlx_new_window(ptr.mlx, 1200, 600, ft_itoa(ac));
