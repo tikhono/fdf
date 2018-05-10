@@ -41,7 +41,7 @@ int		main(int ac, char **av)
 		ptr.ax = 0;
 		ptr.ay = 0;
 		ptr.az = 0;
-		put_map(ptr);
+		put_map(ptr, ptr.scale);
 		mlx_hook(ptr.win, 2, 5, call_hookers, &ptr);
 		mlx_hook(ptr.win, 17, 1L << 17, exit_mouse, &ptr);
 		mlx_loop(ptr.mlx);

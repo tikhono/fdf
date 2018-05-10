@@ -42,23 +42,18 @@ void	find_center(t_mlx *ptr)
 	}
 }
 
-void	put_map(t_mlx ptr)
+void	put_map(t_mlx ptr, int a)
 {
 	int		i;
 	int		j;
-	int 	a;
 	double 	x;
 	double	y;
 
 	find_center(&ptr);
-	a = ptr.scale;
 	i = 0;
 	j = 0;
 	x = 600 + ptr.mx - (ptr.w_max + ptr.w_min) * ptr.scale / 2;
 	y = 300 + ptr.my - (ptr.h_max + ptr.h_min) * ptr.scale / 2;
-
-	printf("\n%lf : %lf\n", x, y);
-
 	mlx_clear_window(ptr.mlx, ptr.win);
 	while (ptr.s_pix[i] != NULL && ptr.s_pix[i + 1])
 	{

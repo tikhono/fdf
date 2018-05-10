@@ -60,7 +60,7 @@ void	rot(int key, t_mlx *ptr)
 	if (key == 14)
 		ptr->az -= a;
 	transform(ptr);
-	put_map(*ptr);
+	put_map(*ptr, ptr->scale);
 }
 
 void	move(int key, t_mlx *ptr)
@@ -73,7 +73,7 @@ void	move(int key, t_mlx *ptr)
 		ptr->my += 5;
 	if (key == 126)
 		ptr->my -= 5;
-	put_map(*ptr);
+	put_map(*ptr, ptr->scale);
 }
 
 void	zoom(int key, t_mlx *ptr)
@@ -82,7 +82,7 @@ void	zoom(int key, t_mlx *ptr)
 		ptr->scale += 1;
 	if (key == 15 && ptr->scale != 1)
 		ptr->scale -= 1;
-	put_map(*ptr);
+	put_map(*ptr, ptr->scale);
 }
 
 int		call_hookers(int key, t_mlx *ptr)
