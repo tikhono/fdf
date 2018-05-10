@@ -12,7 +12,7 @@
 
 #include "main.h"
 
-void	put_help()
+void	put_help(void)
 {
 	void	*mlx;
 	void	*win;
@@ -34,7 +34,7 @@ void	initialise(t_mlx *ptr, t_pix ***arr, int ac)
 	ptr->az = 0;
 }
 
-int 	exit_mouse(t_mlx *ptr)
+int		exit_mouse(t_mlx *ptr)
 {
 	erase(ptr->s_pix);
 	exit(0);

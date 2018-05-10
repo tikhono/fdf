@@ -46,7 +46,7 @@ void	put_map(t_mlx ptr, int a)
 {
 	int		i;
 	int		j;
-	double 	x;
+	double	x;
 	double	y;
 
 	find_center(&ptr);
@@ -59,29 +59,29 @@ void	put_map(t_mlx ptr, int a)
 	{
 		while (ptr.s_pix[i][j] != NULL && ptr.s_pix[i][j + 1] != NULL && ptr.s_pix[i + 1][j] != NULL)
 		{
-			draw_line((int) (ptr.s_pix[i][j]->x * a + x),
-					  (int) (ptr.s_pix[i][j]->y * a + y),
-					  (int) (ptr.s_pix[i][j + 1]->x * a + x),
-					  (int) (ptr.s_pix[i][j + 1]->y * a + y), ptr.mlx, ptr.win);
-			draw_line((int) (ptr.s_pix[i][j]->x * a + x),
-					  (int) (ptr.s_pix[i][j]->y * a + y),
-					  (int) (ptr.s_pix[i + 1][j]->x * a + x),
-					  (int) (ptr.s_pix[i + 1][j]->y * a + y), ptr.mlx, ptr.win);
+			draw_line((int)(ptr.s_pix[i][j]->x * a + x),
+					  (int)(ptr.s_pix[i][j]->y * a + y),
+					  (int)(ptr.s_pix[i][j + 1]->x * a + x),
+					  (int)(ptr.s_pix[i][j + 1]->y * a + y), ptr.mlx, ptr.win);
+			draw_line((int)(ptr.s_pix[i][j]->x * a + x),
+					  (int)(ptr.s_pix[i][j]->y * a + y),
+					  (int)(ptr.s_pix[i + 1][j]->x * a + x),
+					  (int)(ptr.s_pix[i + 1][j]->y * a + y), ptr.mlx, ptr.win);
 			++j;
 		}
-		draw_line((int) (ptr.s_pix[i][j]->x * a + x),
-				  (int) (ptr.s_pix[i][j]->y * a + y),
-				  (int) (ptr.s_pix[i + 1][j]->x * a + x),
-				  (int) (ptr.s_pix[i + 1][j]->y * a + y), ptr.mlx, ptr.win);
+		draw_line((int)(ptr.s_pix[i][j]->x * a + x),
+				  (int)(ptr.s_pix[i][j]->y * a + y),
+				  (int)(ptr.s_pix[i + 1][j]->x * a + x),
+				  (int)(ptr.s_pix[i + 1][j]->y * a + y), ptr.mlx, ptr.win);
 		j = 0;
 		++i;
 	}
 	while (ptr.s_pix[i][j] != NULL && ptr.s_pix[i][j + 1])
 	{
-		draw_line((int) (ptr.s_pix[i][j]->x * a + x),
-				  (int) (ptr.s_pix[i][j]->y * a + y),
-				  (int) (ptr.s_pix[i][j + 1]->x * a + x),
-				  (int) (ptr.s_pix[i][j + 1]->y * a + y), ptr.mlx, ptr.win);
+		draw_line((int)(ptr.s_pix[i][j]->x * a + x),
+				  (int)(ptr.s_pix[i][j]->y * a + y),
+				  (int)(ptr.s_pix[i][j + 1]->x * a + x),
+				  (int)(ptr.s_pix[i][j + 1]->y * a + y), ptr.mlx, ptr.win);
 		++j;
 	}
 }
