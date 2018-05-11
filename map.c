@@ -57,7 +57,7 @@ void	put_map(t_mlx ptr, int a)
 	mlx_clear_window(ptr.mlx, ptr.win);
 	while (ptr.s_pix[i] != NULL && ptr.s_pix[i + 1])
 	{
-		while (ptr.s_pix[i][j] != NULL && ptr.s_pix[i][j + 1] != NULL && ptr.s_pix[i + 1][j] != NULL)
+		while (ptr.s_pix[i][j + 1] != NULL && ptr.s_pix[i + 1][j] != NULL)
 		{
 			draw_line((int)(ptr.s_pix[i][j]->x * a + x),\
 			(int)(ptr.s_pix[i][j]->y * a + y),\
