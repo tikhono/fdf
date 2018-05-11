@@ -33,7 +33,7 @@ void	compare(int *x0, int *y0, int *x1, int *y1)
 	}
 }
 
-void	put_pixel(int x, int y, double c, void *mlx, void *win)
+void	put_pixel(int x, int y, double c, t_mlx ptr)
 {
 	int		alpha;
 	int		argb;
@@ -42,10 +42,10 @@ void	put_pixel(int x, int y, double c, void *mlx, void *win)
 	alpha <<= 24;
 	argb = 0x00FFFFFF;
 	argb += alpha;
-	mlx_pixel_put(mlx, win, x, y, argb);
+	mlx_pixel_put(ptr.mlx, ptr.win, x, y, argb);
 }
 
-void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
+void	draw_line(int x0, int y0, int x1, int y1, t_mlx ptr)
 {
 	double	dist;
 	double	sqr;
@@ -68,7 +68,7 @@ void	draw_line(int x0, int y0, int x1, int y1, void *mlx, void *win)
 		}
 		while (dist <= 1 && x <= x1)
 		{
-			put_pixel(x++, y, dist, mlx, win);
+			put_pixel(x++, y, dist, ptr);
 			dist = abs((y1 - y0) * x - (x1 - x0) * y + x1 * y0 - y1 * x0) / sqr;
 		}
 		if (y == y1)
