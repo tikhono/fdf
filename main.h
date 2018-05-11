@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#ifndef MAIN_H
+# define MAIN_H
 # define FACTOR 3.9015625
 # include <mlx.h>
 # include <math.h>
@@ -25,7 +25,7 @@ typedef struct	s_pix
 	double		y;
 	double		z;
 	double		oz;
-	int 		color;
+	int			color;
 }				t_pix;
 
 typedef struct	s_mlx
