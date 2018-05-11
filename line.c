@@ -6,7 +6,7 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 16:34:05 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/10 17:47:07 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/05/11 20:08:39 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,40 @@ void	put_pixel(int x, int y, double c, t_mlx ptr)
 	mlx_pixel_put(ptr.mlx, ptr.win, x, y, argb);
 }
 
-void	draw_line(int x0, int y0, int x1, int y1, t_mlx ptr)
+//void	draw_line(int x0, int y0, int x1, int y1, t_mlx ptr)
+//{
+//	double	dist;
+//	double	sqr;
+//	int		x;
+//	int		start;
+//	int		y;
+//
+//	compare(&x0, &y0, &x1, &y1);
+//	y = y0;
+//	x = x0;
+//	start = x0;
+//	sqr = sqrt((y1 - y0) * (y1 - y0) + (x1 - x0) * (x1 - x0));
+//	while (1)
+//	{
+//		dist = abs((y1 - y0) * x - (x1 - x0) * y + x1 * y0 - y1 * x0) / sqr;
+//		while (dist > 1 && x <= x1)
+//		{
+//			start = x++;
+//			dist = abs((y1 - y0) * x - (x1 - x0) * y + x1 * y0 - y1 * x0) / sqr;
+//		}
+//		while (dist <= 1 && x <= x1)
+//		{
+//			put_pixel(x++, y, dist, ptr);
+//			dist = abs((y1 - y0) * x - (x1 - x0) * y + x1 * y0 - y1 * x0) / sqr;
+//		}
+//		if (y == y1)
+//			break ;
+//		x = start;
+//		y0 < y1 ? ++y : --y;
+//	}
+//}
+
+void	draw_line(t_point *p0, t_mlx ptr)
 {
 	double	dist;
 	double	sqr;
@@ -53,27 +86,27 @@ void	draw_line(int x0, int y0, int x1, int y1, t_mlx ptr)
 	int		start;
 	int		y;
 
-	compare(&x0, &y0, &x1, &y1);
-	y = y0;
-	x = x0;
-	start = x0;
-	sqr = sqrt((y1 - y0) * (y1 - y0) + (x1 - x0) * (x1 - x0));
+	compare(&p0->x0, &p0->y0, &p0->x1, &p0->y1);
+	y = p0->y0;
+	x = p0->x0;
+	start = p0->x0;
+	sqr = sqrt((p0->y1 - p0->y0) * (p0->y1 - p0->y0) + (p0->x1 - p0->x0) * (p0->x1 - p0->x0));
 	while (1)
 	{
-		dist = abs((y1 - y0) * x - (x1 - x0) * y + x1 * y0 - y1 * x0) / sqr;
-		while (dist > 1 && x <= x1)
+		dist = abs((p0->y1 - p0->y0) * x - (p0->x1 - p0->x0) * y + p0->x1 * p0->y0 - p0->y1 * p0->x0) / sqr;
+		while (dist > 1 && x <= p0->x1)
 		{
 			start = x++;
-			dist = abs((y1 - y0) * x - (x1 - x0) * y + x1 * y0 - y1 * x0) / sqr;
+			dist = abs((p0->y1 - p0->y0) * x - (p0->x1 - p0->x0) * y + p0->x1 * p0->y0 - p0->y1 * p0->x0) / sqr;
 		}
-		while (dist <= 1 && x <= x1)
+		while (dist <= 1 && x <= p0->x1)
 		{
 			put_pixel(x++, y, dist, ptr);
-			dist = abs((y1 - y0) * x - (x1 - x0) * y + x1 * y0 - y1 * x0) / sqr;
+			dist = abs((p0->y1 - p0->y0) * x - (p0->x1 - p0->x0) * y + p0->x1 * p0->y0 - p0->y1 * p0->x0) / sqr;
 		}
-		if (y == y1)
+		if (y == p0->y1)
 			break ;
 		x = start;
-		y0 < y1 ? ++y : --y;
+		p0->y0 < p0->y1 ? ++y : --y;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 17:04:23 by atikhono          #+#    #+#             */
-/*   Updated: 2018/05/07 19:27:07 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/05/11 20:43:34 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,11 @@ void	find_center(t_mlx *ptr)
 
 void	put_map(t_mlx ptr, int a)
 {
-	int		i;
-	int		j;
-	double	x;
-	double	y;
+	int			i;
+	int			j;
+	double		x;
+	double 		y;
+	t_point 	p;
 
 	find_center(&ptr);
 	i = 0;
@@ -59,29 +60,35 @@ void	put_map(t_mlx ptr, int a)
 	{
 		while (ptr.s_pix[i][j + 1] != NULL && ptr.s_pix[i + 1][j] != NULL)
 		{
-			draw_line((int)(ptr.s_pix[i][j]->x * a + x),\
-			(int)(ptr.s_pix[i][j]->y * a + y),\
-			(int)(ptr.s_pix[i][j + 1]->x * a + x),\
-			(int)(ptr.s_pix[i][j + 1]->y * a + y), ptr);
-			draw_line((int)(ptr.s_pix[i][j]->x * a + x),\
-			(int)(ptr.s_pix[i][j]->y * a + y),\
-			(int)(ptr.s_pix[i + 1][j]->x * a + x),\
-			(int)(ptr.s_pix[i + 1][j]->y * a + y), ptr);
+			p.x0 = (int)(ptr.s_pix[i][j]->x * a + x);
+			p.y0 = (int)(ptr.s_pix[i][j]->y * a + y);
+			p.x1 = (int)(ptr.s_pix[i][j + 1]->x * a + x);
+			p.y1 = (int)(ptr.s_pix[i][j + 1]->y * a + y);
+			draw_line(&p, ptr);
+
+			p.x0 = (int)(ptr.s_pix[i][j]->x * a + x);
+			p.y0 = (int)(ptr.s_pix[i][j]->y * a + y);
+			p.x1 = (int)(ptr.s_pix[i + 1][j]->x * a + x);
+			p.y1 = (int)(ptr.s_pix[i + 1][j]->y * a + y);
+			draw_line(&p, ptr);
 			++j;
 		}
-		draw_line((int)(ptr.s_pix[i][j]->x * a + x),\
-		(int)(ptr.s_pix[i][j]->y * a + y),\
-		(int)(ptr.s_pix[i + 1][j]->x * a + x),\
-		(int)(ptr.s_pix[i + 1][j]->y * a + y), ptr);
+		p.x0 = (int)(ptr.s_pix[i][j]->x * a + x);
+		p.y0 = (int)(ptr.s_pix[i][j]->y * a + y);
+		p.x1 = (int)(ptr.s_pix[i + 1][j]->x * a + x);
+		p.y1 = (int)(ptr.s_pix[i + 1][j]->y * a + y);
+
+		draw_line(&p, ptr);
 		j = 0;
 		++i;
 	}
 	while (ptr.s_pix[i][j] != NULL && ptr.s_pix[i][j + 1])
 	{
-		draw_line((int)(ptr.s_pix[i][j]->x * a + x),\
-		(int)(ptr.s_pix[i][j]->y * a + y),\
-		(int)(ptr.s_pix[i][j + 1]->x * a + x),\
-		(int)(ptr.s_pix[i][j + 1]->y * a + y), ptr);
+		p.x0 = (int)(ptr.s_pix[i][j]->x * a + x);
+		p.y0 = (int)(ptr.s_pix[i][j]->y * a + y);
+		p.x1 = (int)(ptr.s_pix[i][j + 1]->x * a + x);
+		p.y1 = (int)(ptr.s_pix[i][j + 1]->y * a + y);
+		draw_line(&p, ptr);
 		++j;
 	}
 }
