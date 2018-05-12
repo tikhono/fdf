@@ -42,6 +42,24 @@ void	find_center(t_mlx *ptr)
 	}
 }
 
+/*void 	fill(t_mlx ptr, double x, double y, int i, int j, char dir)
+{
+	if (dir == 'r')
+	{
+		p.x0 = (int)(ptr.s_pix[i][j]->x * a + x);
+		p.y0 = (int)(ptr.s_pix[i][j]->y * a + y);
+		p.x1 = (int)(ptr.s_pix[i][j + 1]->x * a + x);
+		p.y1 = (int)(ptr.s_pix[i][j + 1]->y * a + y);
+	}
+	if (dir == 'd')
+	{
+
+
+
+
+	}
+}*/
+
 void	put_map(t_mlx ptr, int a)
 {
 	int			i;
@@ -51,21 +69,30 @@ void	put_map(t_mlx ptr, int a)
 	t_point 	p;
 
 	find_center(&ptr);
-	i = 0;
-	j = 0;
 	x = 600 + ptr.mx - (ptr.w_max + ptr.w_min) * ptr.scale / 2;
 	y = 300 + ptr.my - (ptr.h_max + ptr.h_min) * ptr.scale / 2;
 	mlx_clear_window(ptr.mlx, ptr.win);
-	while (ptr.s_pix[i] != NULL && ptr.s_pix[i + 1])
+	i = 0;
+	while (ptr.s_pix[i] != NULL)
 	{
-		while (ptr.s_pix[i][j + 1] != NULL && ptr.s_pix[i + 1][j] != NULL)
+		j = 0;
+		while (ptr.s_pix[i][j + 1] != NULL)
 		{
 			p.x0 = (int)(ptr.s_pix[i][j]->x * a + x);
 			p.y0 = (int)(ptr.s_pix[i][j]->y * a + y);
 			p.x1 = (int)(ptr.s_pix[i][j + 1]->x * a + x);
 			p.y1 = (int)(ptr.s_pix[i][j + 1]->y * a + y);
 			draw_line(&p, ptr);
-
+			++j;
+		}
+		++i;
+	}
+	i = 0;
+	while (ptr.s_pix[i] != NULL && ptr.s_pix[i + 1] != NULL)
+	{
+		j = 0;
+		while (ptr.s_pix[i][j] != NULL && ptr.s_pix[i + 1][j] != NULL)
+		{
 			p.x0 = (int)(ptr.s_pix[i][j]->x * a + x);
 			p.y0 = (int)(ptr.s_pix[i][j]->y * a + y);
 			p.x1 = (int)(ptr.s_pix[i + 1][j]->x * a + x);
@@ -73,22 +100,6 @@ void	put_map(t_mlx ptr, int a)
 			draw_line(&p, ptr);
 			++j;
 		}
-		p.x0 = (int)(ptr.s_pix[i][j]->x * a + x);
-		p.y0 = (int)(ptr.s_pix[i][j]->y * a + y);
-		p.x1 = (int)(ptr.s_pix[i + 1][j]->x * a + x);
-		p.y1 = (int)(ptr.s_pix[i + 1][j]->y * a + y);
-
-		draw_line(&p, ptr);
-		j = 0;
 		++i;
-	}
-	while (ptr.s_pix[i][j] != NULL && ptr.s_pix[i][j + 1])
-	{
-		p.x0 = (int)(ptr.s_pix[i][j]->x * a + x);
-		p.y0 = (int)(ptr.s_pix[i][j]->y * a + y);
-		p.x1 = (int)(ptr.s_pix[i][j + 1]->x * a + x);
-		p.y1 = (int)(ptr.s_pix[i][j + 1]->y * a + y);
-		draw_line(&p, ptr);
-		++j;
 	}
 }

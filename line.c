@@ -45,39 +45,6 @@ void	put_pixel(int x, int y, double c, t_mlx ptr)
 	mlx_pixel_put(ptr.mlx, ptr.win, x, y, argb);
 }
 
-//void	draw_line(int x0, int y0, int x1, int y1, t_mlx ptr)
-//{
-//	double	dist;
-//	double	sqr;
-//	int		x;
-//	int		start;
-//	int		y;
-//
-//	compare(&x0, &y0, &x1, &y1);
-//	y = y0;
-//	x = x0;
-//	start = x0;
-//	sqr = sqrt((y1 - y0) * (y1 - y0) + (x1 - x0) * (x1 - x0));
-//	while (1)
-//	{
-//		dist = abs((y1 - y0) * x - (x1 - x0) * y + x1 * y0 - y1 * x0) / sqr;
-//		while (dist > 1 && x <= x1)
-//		{
-//			start = x++;
-//			dist = abs((y1 - y0) * x - (x1 - x0) * y + x1 * y0 - y1 * x0) / sqr;
-//		}
-//		while (dist <= 1 && x <= x1)
-//		{
-//			put_pixel(x++, y, dist, ptr);
-//			dist = abs((y1 - y0) * x - (x1 - x0) * y + x1 * y0 - y1 * x0) / sqr;
-//		}
-//		if (y == y1)
-//			break ;
-//		x = start;
-//		y0 < y1 ? ++y : --y;
-//	}
-//}
-
 void	draw_line(t_point *p0, t_mlx ptr)
 {
 	double	dist;
