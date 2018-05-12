@@ -60,7 +60,7 @@ typedef struct	s_mlx
 }				t_mlx;
 
 t_pix			***parse(char *file);
-void			draw_line(t_point *p0, t_mlx ptr);
+void			draw_line(t_point *p, t_mlx ptr);
 void			put_map(t_mlx ptr);
 int				call_hookers(int key, t_mlx *ptr);
 t_pix			***erase(t_pix ***arr);
