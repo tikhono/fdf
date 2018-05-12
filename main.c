@@ -20,13 +20,13 @@ void	put_help(void)
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 300, 200, "HELP");
 	mlx_string_put(mlx, win, 10, 10, 0xFFFFFF, "Scroll up/down to"" zoom int");
+	mlx_loop(mlx);
 }
 
 void	initialise(t_mlx *ptr, t_pix ***arr, int ac)
 {
 	ptr->mlx = mlx_init();
 	ptr->win = mlx_new_window(ptr->mlx, 1200, 600, ft_itoa(ac));
-	put_help();
 	ptr->s_pix = arr;
 	ptr->scale = 10;
 	ptr->ax = 0;

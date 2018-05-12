@@ -19,18 +19,18 @@
 # include "main.h"
 # include "libft/libft.h"
 
-typedef struct 	s_point
+typedef struct	s_point
 {
-	int 	x0;
-	int 	y0;
-	int 	x1;
-	int 	y1;
+	int			x0;
+	int			y0;
+	int			x1;
+	int			y1;
 }				t_point;
 
-typedef struct 	s_buff
+typedef struct	s_buff
 {
-	double	x;
-	double	y;
+	double		x;
+	double		y;
 }				t_buff;
 
 typedef struct	s_pix

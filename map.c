@@ -42,28 +42,11 @@ void	find_center(t_mlx *ptr)
 	}
 }
 
-/*void 	fill(t_mlx ptr, double x, double y, int i, int j, char dir)
-{
-	if (dir == 'r')
-	{
-		p.x0 = (int)(ptr.s_pix[i][j]->x * a + x);
-		p.y0 = (int)(ptr.s_pix[i][j]->y * a + y);
-		p.x1 = (int)(ptr.s_pix[i][j + 1]->x * a + x);
-		p.y1 = (int)(ptr.s_pix[i][j + 1]->y * a + y);
-	}
-	if (dir == 'd')
-	{
-
-
-
-
-	}
-}*/
-
 void	draw_h(t_mlx ptr, t_point p, t_buff b)
 {
-	int 	i;
-	int 	j;
+	int	i;
+	int	j;
+
 	i = 0;
 	while (ptr.s_pix[i] != NULL)
 	{
@@ -83,8 +66,8 @@ void	draw_h(t_mlx ptr, t_point p, t_buff b)
 
 void	draw_v(t_mlx ptr, t_point p, t_buff b)
 {
-	int 	i;
-	int 	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (ptr.s_pix[i] != NULL && ptr.s_pix[i + 1] != NULL)
@@ -105,8 +88,8 @@ void	draw_v(t_mlx ptr, t_point p, t_buff b)
 
 void	put_map(t_mlx ptr)
 {
-	t_buff		b;
-	t_point 	p;
+	t_buff	b;
+	t_point	p;
 
 	find_center(&ptr);
 	b.x = 600 + ptr.mx - (ptr.w_max + ptr.w_min) * ptr.scale / 2;
