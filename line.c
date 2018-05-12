@@ -15,21 +15,6 @@
 #include <mlx.h>
 #include "main.h"
 
-void	compare(int *x0, int *y0, int *x1, int *y1)
-{
-	int temp;
-
-	if (*x0 > *x1)
-	{
-		temp = *x0;
-		*x0 = *x1;
-		*x1 = temp;
-		temp = *y0;
-		*y0 = *y1;
-		*y1 = temp;
-	}
-}
-
 void	put_pixel(int x, int y, double c, t_mlx ptr)
 {
 	int		alpha;
@@ -51,17 +36,12 @@ double	find_dist(t_point *p, double sqr, int x, int y)
 	return (res);
 }
 
-void	draw_line(t_point *p, t_mlx ptr)
+void	draw_line(t_point *p, t_mlx ptr, int x, int y)
 {
 	double	dist;
 	double	sqr;
-	int		x;
-	int		y;
 	int		start;
 
-	compare(&p->x0, &p->y0, &p->x1, &p->y1);
-	y = p->y0;
-	x = p->x0;
 	start = p->x0;
 	sqr = sqrt(pow((p->y1 - p->y0), 2.0) + pow((p->x1 - p->x0), 2.0));
 	while (1)

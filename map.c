@@ -13,6 +13,21 @@
 #include <printf.h>
 #include "main.h"
 
+void	compare(int *x0, int *y0, int *x1, int *y1)
+{
+	int temp;
+
+	if (*x0 > *x1)
+	{
+		temp = *x0;
+		*x0 = *x1;
+		*x1 = temp;
+		temp = *y0;
+		*y0 = *y1;
+		*y1 = temp;
+	}
+}
+
 void	find_center(t_mlx *ptr)
 {
 	int		i;
@@ -42,7 +57,7 @@ void	find_center(t_mlx *ptr)
 	}
 }
 
-void	draw_h(t_mlx ptr, t_point p, t_buff b)
+void	draw_h(t_mlx ptr, t_point *p, t_buff b)
 {
 	int	i;
 	int	j;
@@ -53,18 +68,19 @@ void	draw_h(t_mlx ptr, t_point p, t_buff b)
 		j = 0;
 		while (ptr.s_pix[i][j + 1] != NULL)
 		{
-			p.x0 = (int)(ptr.s_pix[i][j]->x * ptr.scale + b.x);
-			p.y0 = (int)(ptr.s_pix[i][j]->y * ptr.scale + b.y);
-			p.x1 = (int)(ptr.s_pix[i][j + 1]->x * ptr.scale + b.x);
-			p.y1 = (int)(ptr.s_pix[i][j + 1]->y * ptr.scale + b.y);
-			draw_line(&p, ptr);
+			p->x0 = (int)(ptr.s_pix[i][j]->x * ptr.scale + b.x);
+			p->y0 = (int)(ptr.s_pix[i][j]->y * ptr.scale + b.y);
+			p->x1 = (int)(ptr.s_pix[i][j + 1]->x * ptr.scale + b.x);
+			p->y1 = (int)(ptr.s_pix[i][j + 1]->y * ptr.scale + b.y);
+			compare(&p->x0, &p->y0, &p->x1, &p->y1);
+			draw_line(p, ptr, p->x0, p->y0);
 			++j;
 		}
 		++i;
 	}
 }
 
-void	draw_v(t_mlx ptr, t_point p, t_buff b)
+void	draw_v(t_mlx ptr, t_point *p, t_buff b)
 {
 	int	i;
 	int	j;
@@ -75,11 +91,12 @@ void	draw_v(t_mlx ptr, t_point p, t_buff b)
 		j = 0;
 		while (ptr.s_pix[i][j] != NULL && ptr.s_pix[i + 1][j] != NULL)
 		{
-			p.x0 = (int)(ptr.s_pix[i][j]->x * ptr.scale + b.x);
-			p.y0 = (int)(ptr.s_pix[i][j]->y * ptr.scale + b.y);
-			p.x1 = (int)(ptr.s_pix[i + 1][j]->x * ptr.scale + b.x);
-			p.y1 = (int)(ptr.s_pix[i + 1][j]->y * ptr.scale + b.y);
-			draw_line(&p, ptr);
+			p->x0 = (int)(ptr.s_pix[i][j]->x * ptr.scale + b.x);
+			p->y0 = (int)(ptr.s_pix[i][j]->y * ptr.scale + b.y);
+			p->x1 = (int)(ptr.s_pix[i + 1][j]->x * ptr.scale + b.x);
+			p->y1 = (int)(ptr.s_pix[i + 1][j]->y * ptr.scale + b.y);
+			compare(&p->x0, &p->y0, &p->x1, &p->y1);
+			draw_line(p, ptr, p->x0, p->y0);
 			++j;
 		}
 		++i;
@@ -95,6 +112,6 @@ void	put_map(t_mlx ptr)
 	b.x = 600 + ptr.mx - (ptr.w_max + ptr.w_min) * ptr.scale / 2;
 	b.y = 300 + ptr.my - (ptr.h_max + ptr.h_min) * ptr.scale / 2;
 	mlx_clear_window(ptr.mlx, ptr.win);
-	draw_h(ptr, p, b);
-	draw_v(ptr, p, b);
+	draw_h(ptr, &p, b);
+	draw_v(ptr, &p, b);
 }
