@@ -27,11 +27,11 @@ typedef struct 	s_point
 	int 	y1;
 }				t_point;
 
-typedef struct 	s_offset
+typedef struct 	s_buff
 {
-	double x;
-	double y;
-}				t_offset;
+	double	x;
+	double	y;
+}				t_buff;
 
 typedef struct	s_pix
 {
@@ -60,10 +60,8 @@ typedef struct	s_mlx
 }				t_mlx;
 
 t_pix			***parse(char *file);
-//void			draw_line(int x0, int y0, int x1, int y1, t_mlx ptr);
 void			draw_line(t_point *p0, t_mlx ptr);
-
-void			put_map(t_mlx ptr, int a);
+void			put_map(t_mlx ptr);
 int				call_hookers(int key, t_mlx *ptr);
 t_pix			***erase(t_pix ***arr);
 

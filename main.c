@@ -56,7 +56,7 @@ int		main(int ac, char **av)
 	if ((arr = parse(av[ac])))
 	{
 		initialise(&ptr, arr, ac);
-		put_map(ptr, ptr.scale);
+		put_map(ptr);
 		mlx_hook(ptr.win, 2, 5, call_hookers, &ptr);
 		mlx_hook(ptr.win, 17, 1L << 17, exit_mouse, &ptr);
 		mlx_loop(ptr.mlx);
