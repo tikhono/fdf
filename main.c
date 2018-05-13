@@ -12,9 +12,8 @@
 
 #include "main.h"
 
-int		exit_mouse(t_mlx *ptr)
+int		exit_mouse(void)
 {
-	erase(ptr->s_pix, 0, 0);
 	exit(0);
 }
 

@@ -68,6 +68,5 @@ t_pix			***parse(char *file);
 void			draw_line(t_point *p, t_mlx ptr, int x, int y);
 void			put_map(t_mlx ptr);
 int				call_hookers(int key, t_mlx *ptr);
-t_pix			***erase(t_pix ***arr, int i, int j);
 
 #endif

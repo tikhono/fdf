@@ -14,6 +14,12 @@
 #include <unistd.h>
 #include "main.h"
 
+t_pix	***ret(t_pix ***arr, t_buff_i *b)
+{
+	free(b);
+	return (arr);
+}
+
 int		number_of_rows(int fd)
 {
 	int		res;
@@ -34,39 +40,6 @@ int		number_of_rows(int fd)
 	free(line);
 	close(fd);
 	return (res);
-}
-
-t_pix	***erase(t_pix ***arr, int i, int j)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	while (arr[x] && x <= i)
-	{
-		y = 0;
-		while (arr[x][y])
-		{
-			free(arr[x][y]);
-			++y;
-		}
-		free(arr[x]);
-		++x;
-	}
-	while (arr[x])
-	{
-		y = 0;
-		while (arr[x][y] && y <= j)
-		{
-			free(arr[x][y]);
-			++y;
-		}
-		free(arr[x]);
-		++x;
-	}
-	free(arr);
-	system("leaks fdf");
-	return (NULL);
 }
 
 int		put(t_pix ***arr, char **temp, int i, int j)
@@ -114,7 +87,7 @@ t_pix	***fill(t_pix ***arr, int fd, t_buff_i *b, int c)
 		while (buf[b->j] != NULL)
 		{
 			if (put(arr, ft_strsplit(buf[b->j], ','), b->i, b->j) || c != rows)
-				return (erase(arr, b->i, b->j));
+				return (NULL);
 			free(buf[b->j]);
 			++b->j;
 		}
@@ -122,7 +95,7 @@ t_pix	***fill(t_pix ***arr, int fd, t_buff_i *b, int c)
 		++b->i;
 	}
 	close(fd);
-	return (arr);
+	return (ret(arr, b));
 }
 
 t_pix	***parse(char *file)
