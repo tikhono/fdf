@@ -14,9 +14,9 @@
 #include <unistd.h>
 #include "main.h"
 
-t_pix	***ret(t_pix ***arr, t_buff_i *b)
+t_pix	***ret(t_pix ***arr, char *line)
 {
-	free(b);
+	free(line);
 	return (arr);
 }
 
@@ -97,9 +97,8 @@ t_pix	***fill(t_pix ***arr, int fd, t_buff_i *b, int c)
 		free(buf);
 		++b->i;
 	}
-	free(line);
 	close(fd);
-	return (arr);
+	return (ret(arr, line));
 }
 
 t_pix	***parse(char *file)
