@@ -25,13 +25,17 @@ void	put_help(void)
 
 void	initialise(t_mlx *ptr, t_pix ***arr, int ac)
 {
+	char *a;
+
+	a = ft_itoa(ac);
 	ptr->mlx = mlx_init();
-	ptr->win = mlx_new_window(ptr->mlx, 1200, 600, ft_itoa(ac));
+	ptr->win = mlx_new_window(ptr->mlx, 1200, 600, a);
 	ptr->s_pix = arr;
 	ptr->scale = 10;
 	ptr->ax = 0;
 	ptr->ay = 0;
 	ptr->az = 0;
+	free(a);
 }
 
 int		exit_mouse(t_mlx *ptr)
