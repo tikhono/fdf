@@ -42,10 +42,21 @@ t_pix	***erase(t_pix ***arr, int i, int j)
 	int	y;
 
 	x = 0;
-	while (arr[x] && x < i)
+	while (arr[x] && x <= i)
 	{
 		y = 0;
-		while (arr[x][y] && y < j)
+		while (arr[x][y])
+		{
+			free(arr[x][y]);
+			++y;
+		}
+		free(arr[x]);
+		++x;
+	}
+	while (arr[x])
+	{
+		y = 0;
+		while (arr[x][y] && y <= j)
 		{
 			free(arr[x][y]);
 			++y;
@@ -54,6 +65,7 @@ t_pix	***erase(t_pix ***arr, int i, int j)
 		++x;
 	}
 	free(arr);
+	system("leaks fdf");
 	return (NULL);
 }
 
