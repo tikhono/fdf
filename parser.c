@@ -16,11 +16,7 @@
 
 t_pix	***ret(t_pix ***arr, t_buff_i *b)
 {
-	__builtin_printf("1\n");
-	system("leaks fdf");
 	free(b);
-	__builtin_printf("2\n");
-	system("leaks fdf");
 	return (arr);
 }
 
@@ -122,9 +118,7 @@ t_pix	***parse(char *file)
 		return (0);
 	arr = (t_pix ***)malloc(sizeof(t_pix **) * (rows + 1));
 	arr[rows] = NULL;
-	//b = (t_buff_i *)malloc(sizeof(t_buff_i) * 2);
 	b.i = 0;
 	b.j = 0;
-	__builtin_printf("%p\n", arr);
 	return (fill(arr, fd, &b, 0));
 }
