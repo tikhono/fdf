@@ -47,7 +47,10 @@ int		put(t_pix ***arr, char **temp, int i, int j)
 	if (ft_num_of_rows(temp) <= 2)
 	{
 		if (!ft_isnum(temp[0], 10))
+		{
+			free(temp[1]);
 			return (1);
+		}
 		arr[i][j] = (t_pix *)malloc(sizeof(t_pix));
 		arr[i][j]->oz = ft_atoi(temp[0]);
 		free(temp[0]);
@@ -57,14 +60,21 @@ int		put(t_pix ***arr, char **temp, int i, int j)
 		if (temp[1] != NULL)
 		{
 			if ((!ft_isnum(temp[1], 16)) && temp[1][0] != '\0')
+			{
+				free(temp[1]);
 				return (1);
+			}
 			if (ft_strlen(temp[1]) >= 10)
+			{
+				free(temp[1]);
 				return (1);
-			free(temp[1]);
+			}
 		}
 	}
 	else
 	{
+		while (*temp)
+			free(temp);
 		free(temp);
 		return (1);
 	}
@@ -90,7 +100,10 @@ t_pix	***fill(t_pix ***arr, int fd, t_buff_i *b, int c)
 		while (buf[b->j] != NULL)
 		{
 			if (put(arr, ft_strsplit(buf[b->j], ','), b->i, b->j) || c != rows)
+			{
+				
 				return (NULL);
+			}
 			free(buf[b->j]);
 			++b->j;
 		}

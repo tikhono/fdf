@@ -64,12 +64,14 @@ int		main(int ac, char **av)
 		initialise(&ptr, arr, ac);
 		put_help(ptr);
 		put_map(ptr);
-		system("leaks fdf");
 		mlx_hook(ptr.win, 2, 5, call_hookers, &ptr);
 		mlx_hook(ptr.win, 17, 1L << 17, exit_mouse, &ptr);
 		mlx_loop(ptr.mlx);
 	}
 	else
+	{
+		system("leaks fdf");
 		ft_putstr("Invalid map");
+	}
 	return (0);
 }
