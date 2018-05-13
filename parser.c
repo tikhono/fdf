@@ -75,15 +75,12 @@ int		put_pix(t_pix ***arr, char **temp, int i, int j)
 				return (1);
 			if (ft_strlen(temp[1]) >= 10)
 				return (1);
-			arr[i][j]->color = ft_atoi_base(temp[1], 16);
 			free(temp[1]);
-			free(temp);
 		}
-		else
-			arr[i][j]->color = 0x00FFFFFF;
 	}
 	else
 		return (1);
+	free(temp);
 	return (0);
 }
 

@@ -39,7 +39,6 @@ typedef struct	s_pix
 	double		y;
 	double		z;
 	double		oz;
-	int			color;
 }				t_pix;
 
 typedef struct	s_mlx
