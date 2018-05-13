@@ -22,16 +22,16 @@ int		number_of_rows(int fd)
 
 	res = 0;
 	end = 1;
+	line = (char *)malloc(sizeof(char *) * 256);
 	while (end != 0)
 	{
-		line = (char *)malloc(sizeof(char) * 256);
 		end = read(fd, line, 256);
 		if (end == -1)
 			return (-1);
 		line[end] = '\0';
 		res += ft_count_chars(line, "\n");
-	//	free(line);
 	}
+	free(line);
 	close(fd);
 	return (res);
 }
@@ -77,7 +77,7 @@ int		put_pix(t_pix ***arr, char **temp, int i, int j)
 				return (1);
 			arr[i][j]->color = ft_atoi_base(temp[1], 16);
 			free(temp[1]);
-	//		free(temp);
+			free(temp);
 		}
 		else
 			arr[i][j]->color = 0x00FFFFFF;
