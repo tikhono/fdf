@@ -36,16 +36,16 @@ int		number_of_rows(int fd)
 	return (res);
 }
 
-t_pix	***erase(t_pix ***arr)
+t_pix	***erase(t_pix ***arr, int i, int j)
 {
 	int	x;
 	int	y;
 
 	x = 0;
-	while (arr[x])
+	while (arr[x] && x < i)
 	{
 		y = 0;
-		while (arr[x][y])
+		while (arr[x][y] && y < j)
 		{
 			free(arr[x][y]);
 			++y;
@@ -57,7 +57,7 @@ t_pix	***erase(t_pix ***arr)
 	return (NULL);
 }
 
-int		put_pix(t_pix ***arr, char **temp, int i, int j)
+int		put(t_pix ***arr, char **temp, int i, int j)
 {
 	if (ft_num_of_rows(temp) <= 2)
 	{
@@ -84,7 +84,7 @@ int		put_pix(t_pix ***arr, char **temp, int i, int j)
 	return (0);
 }
 
-t_pix	***fill(t_pix ***arr, int fd, int i, int j)
+t_pix	***fill(t_pix ***arr, int fd, t_buff_i *b, int c)
 {
 	char	*line;
 	char	**buf;
@@ -94,19 +94,20 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 	{
 		buf = ft_strsplit(line, ' ');
 		free(line);
-		j = 0;
+		b->j = 0;
 		rows = ft_num_of_rows(buf);
-		arr[i] = (t_pix **)malloc(sizeof(t_pix *) * (rows + 1));
-		arr[i][rows] = NULL;
-		while (buf[j] != NULL)
+		c = (b->i == 0 ? rows : c);
+		arr[b->i] = (t_pix **)malloc(sizeof(t_pix *) * (rows + 1));
+		arr[b->i][rows] = NULL;
+		while (buf[b->j] != NULL)
 		{
-			if (put_pix(arr, ft_strsplit(buf[j], ','), i, j))
-				return (erase(arr));
-			free(buf[j]);
-			++j;
+			if (put(arr, ft_strsplit(buf[b->j], ','), b->i, b->j) || c != rows)
+				return (erase(arr, b->i, b->j));
+			free(buf[b->j]);
+			++b->j;
 		}
 		free(buf);
-		++i;
+		++b->i;
 	}
 	close(fd);
 	return (arr);
@@ -114,9 +115,10 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 
 t_pix	***parse(char *file)
 {
-	int		fd;
-	int		rows;
-	t_pix	***arr;
+	int			fd;
+	int			rows;
+	t_buff_i	*b;
+	t_pix		***arr;
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
@@ -127,5 +129,8 @@ t_pix	***parse(char *file)
 		return (0);
 	arr = (t_pix ***)malloc(sizeof(t_pix **) * (rows + 2));
 	arr[rows + 1] = NULL;
-	return (fill(arr, fd, 0, 0));
+	b = (t_buff_i *)malloc(sizeof(t_buff_i) * 2);
+	b->i = 0;
+	b->j = 0;
+	return (fill(arr, fd, b, 0));
 }

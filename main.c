@@ -12,15 +12,24 @@
 
 #include "main.h"
 
-void	put_help(void)
+int		exit_mouse(t_mlx *ptr)
 {
-	void	*mlx;
+	erase(ptr->s_pix, 0, 0);
+	exit(0);
+}
+
+void	put_help(t_mlx p)
+{
 	void	*win;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 300, 200, "HELP");
-	mlx_string_put(mlx, win, 10, 10, 0xFFFFFF, "Scroll up/down to"" zoom int");
-	mlx_loop(mlx);
+	win = mlx_new_window(p.mlx, 200, 150, "HELP");
+	mlx_string_put(p.mlx, win, 10, 10, 0xFFFFFF, "Q and A - rot x\n");
+	mlx_string_put(p.mlx, win, 10, 30, 0xFFFFFF, "W and S - rot y\n");
+	mlx_string_put(p.mlx, win, 10, 50, 0xFFFFFF, "E and D - rot z\n");
+	mlx_string_put(p.mlx, win, 10, 70, 0xFFFFFF, "R and F - zoom\n");
+	mlx_string_put(p.mlx, win, 10, 90, 0xFFFFFF, "Arrows  - move\n");
+	mlx_hook(p.win, 2, 5, call_hookers, &p);
+	mlx_hook(p.win, 17, 1L << 17, exit_mouse, &p);
 }
 
 void	initialise(t_mlx *ptr, t_pix ***arr, int ac)
@@ -36,12 +45,6 @@ void	initialise(t_mlx *ptr, t_pix ***arr, int ac)
 	ptr->ay = 0;
 	ptr->az = 0;
 	free(a);
-}
-
-int		exit_mouse(t_mlx *ptr)
-{
-	erase(ptr->s_pix);
-	exit(0);
 }
 
 int		main(int ac, char **av)
@@ -60,6 +63,7 @@ int		main(int ac, char **av)
 	if ((arr = parse(av[ac])))
 	{
 		initialise(&ptr, arr, ac);
+		put_help(ptr);
 		put_map(ptr);
 		mlx_hook(ptr.win, 2, 5, call_hookers, &ptr);
 		mlx_hook(ptr.win, 17, 1L << 17, exit_mouse, &ptr);
