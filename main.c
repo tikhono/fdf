@@ -61,6 +61,8 @@ int		main(int ac, char **av)
 	--ac;
 	if ((arr = parse(av[ac])))
 	{
+		__builtin_printf("%p\n", arr);
+		system("leaks fdf");
 		initialise(&ptr, arr, ac);
 		put_help(ptr);
 		put_map(ptr);

@@ -16,7 +16,11 @@
 
 t_pix	***ret(t_pix ***arr, t_buff_i *b)
 {
+	__builtin_printf("1\n");
+	system("leaks fdf");
 	free(b);
+	__builtin_printf("2\n");
+	system("leaks fdf");
 	return (arr);
 }
 
@@ -64,7 +68,10 @@ int		put(t_pix ***arr, char **temp, int i, int j)
 		}
 	}
 	else
+	{
+		free(temp);
 		return (1);
+	}
 	free(temp);
 	return (0);
 }
@@ -94,15 +101,16 @@ t_pix	***fill(t_pix ***arr, int fd, t_buff_i *b, int c)
 		free(buf);
 		++b->i;
 	}
+	free(line);
 	close(fd);
-	return (ret(arr, b));
+	return (arr);
 }
 
 t_pix	***parse(char *file)
 {
 	int			fd;
 	int			rows;
-	t_buff_i	*b;
+	t_buff_i	b;
 	t_pix		***arr;
 
 	fd = open(file, O_RDONLY);
@@ -112,10 +120,11 @@ t_pix	***parse(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0 || rows <= 0)
 		return (0);
-	arr = (t_pix ***)malloc(sizeof(t_pix **) * (rows + 2));
-	arr[rows + 1] = NULL;
-	b = (t_buff_i *)malloc(sizeof(t_buff_i) * 2);
-	b->i = 0;
-	b->j = 0;
-	return (fill(arr, fd, b, 0));
+	arr = (t_pix ***)malloc(sizeof(t_pix **) * (rows + 1));
+	arr[rows] = NULL;
+	//b = (t_buff_i *)malloc(sizeof(t_buff_i) * 2);
+	b.i = 0;
+	b.j = 0;
+	__builtin_printf("%p\n", arr);
+	return (fill(arr, fd, &b, 0));
 }
