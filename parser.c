@@ -13,7 +13,6 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include "main.h"
-#include "libft/libft.h"
 
 int		number_of_rows(int fd)
 {
@@ -31,6 +30,7 @@ int		number_of_rows(int fd)
 			return (-1);
 		line[end] = '\0';
 		res += ft_count_chars(line, "\n");
+	//	free(line);
 	}
 	close(fd);
 	return (res);
@@ -50,6 +50,7 @@ t_pix	***erase(t_pix ***arr)
 			free(arr[x][y]);
 			++y;
 		}
+		free(arr[x]);
 		++x;
 	}
 	free(arr);
@@ -64,6 +65,7 @@ int		put_pix(t_pix ***arr, char **temp, int i, int j)
 			return (1);
 		arr[i][j] = (t_pix *)malloc(sizeof(t_pix));
 		arr[i][j]->oz = ft_atoi(temp[0]);
+		free(temp[0]);
 		arr[i][j]->x = j;
 		arr[i][j]->y = i;
 		arr[i][j]->z = arr[i][j]->oz;
@@ -74,6 +76,8 @@ int		put_pix(t_pix ***arr, char **temp, int i, int j)
 			if (ft_strlen(temp[1]) >= 10)
 				return (1);
 			arr[i][j]->color = ft_atoi_base(temp[1], 16);
+			free(temp[1]);
+	//		free(temp);
 		}
 		else
 			arr[i][j]->color = 0x00FFFFFF;
@@ -86,7 +90,6 @@ int		put_pix(t_pix ***arr, char **temp, int i, int j)
 t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 {
 	char	*line;
-	char	**temp;
 	char	**buf;
 	int		rows;
 
@@ -100,9 +103,9 @@ t_pix	***fill(t_pix ***arr, int fd, int i, int j)
 		arr[i][rows] = NULL;
 		while (buf[j] != NULL)
 		{
-			temp = ft_strsplit(buf[j], ',');
-			if (put_pix(arr, temp, i, j))
+			if (put_pix(arr, ft_strsplit(buf[j], ','), i, j))
 				return (erase(arr));
+			free(buf[j]);
 			++j;
 		}
 		free(buf);
