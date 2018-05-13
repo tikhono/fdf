@@ -93,5 +93,7 @@ int		call_hookers(int key, t_mlx *ptr)
 		move(key, ptr);
 	if (key == 3 || key == 15)
 		zoom(key, ptr);
+	if (key == 53)
+		exit(0);
 	return (0);
 }
