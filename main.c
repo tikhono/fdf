@@ -6,7 +6,7 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 15:56:24 by atikhono          #+#    #+#             */
-/*   Updated: 2018/04/10 18:14:40 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/05/14 16:15:12 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ int		main(int ac, char **av)
 	}
 	else
 	{
-		system("leaks fdf");
 		ft_putstr("Invalid map");
+		system("leaks fdf");
 	}
 	return (0);
 }
