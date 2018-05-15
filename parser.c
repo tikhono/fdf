@@ -49,14 +49,14 @@ void	put(t_pix ***arr, char **buf, t_buff_i *b, char *file)
 		temp = ft_strsplit(buf[b->j], ',');
 		if (ft_num_of_rows(temp) > 2 || !ft_isnum(temp[0], 10))
 		{
-			fprintf(stderr, "In %s row: %i\t, col: %i\t\n", file, b->j, b->i);
+			fprintf(stderr, "In %s row: %i, col: %i\n", file, b->j, b->i);
 			exit(-1);
 		}
 		if (temp[1] != NULL)
 			if ((!ft_isnum(temp[1], 16)) || temp[1][0] != '\0' || \
 			(ft_strlen(temp[1]) >= 10))
 			{
-				fprintf(stderr, "In %s row:%i\t, col:%i\t\n", file, b->j, b->i);
+				fprintf(stderr, "In %s row: %i, col: %i\n", file, b->j, b->i);
 				exit(-1);
 			}
 		arr[b->i][b->j] = (t_pix *)malloc(sizeof(t_pix));
@@ -85,7 +85,7 @@ t_pix	***fill(t_pix ***arr, int fd, t_buff_i *b, char *file)
 			b->c = rows;
 		else if (b->c != rows)
 		{
-			fprintf(stderr, "In %s row: %i\t, col: %i\t\n", file, b->j, b->i);
+			fprintf(stderr, "In %s row: %i, col: %i\n", file, b->j, b->i);
 			exit(-1);
 		}
 		arr[b->i] = (t_pix **)malloc(sizeof(t_pix *) * (rows + 1));
