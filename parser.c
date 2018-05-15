@@ -6,16 +6,18 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 17:57:48 by atikhono          #+#    #+#             */
-/*   Updated: 2018/05/15 16:34:37 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/05/15 18:26:33 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-t_pix	***del(t_pix ***arr, char *line)
+void	ft_exit(char *file, int i, int j)
 {
-	free(line);
-	return (arr);
+	++i;
+	++j;
+	fprintf(stderr, "Error in %s, value at row: %i, col: %i\n", file, i, j);
+	exit(-1);
 }
 
 int		number_of_rows(int fd)
@@ -48,24 +50,19 @@ void	put(t_pix ***arr, char **buf, t_buff_i *b, char *file)
 	{
 		temp = ft_strsplit(buf[b->j], ',');
 		if (ft_num_of_rows(temp) > 2 || !ft_isnum(temp[0], 10))
-		{
-			fprintf(stderr, "In %s row: %i, col: %i\n", file, b->j, b->i);
-			exit(-1);
-		}
+			ft_exit(file, b->i, b->j);
+		if (ft_strchr(buf[b->j], ',') != NULL)
+			if (*(ft_strchr(buf[b->j], ',') + 1) != '0')
+				ft_exit(file, b->i, b->j);
 		if (temp[1] != NULL)
-			if ((!ft_isnum(temp[1], 16)) || temp[1][0] != '\0' || \
-			(ft_strlen(temp[1]) >= 10))
-			{
-				fprintf(stderr, "In %s row: %i, col: %i\n", file, b->j, b->i);
-				exit(-1);
-			}
+			if ((!ft_isnum(temp[1], 16)) || (ft_strlen(temp[1]) >= 10))
+				ft_exit(file, b->i, b->j);
 		arr[b->i][b->j] = (t_pix *)malloc(sizeof(t_pix));
 		arr[b->i][b->j]->oz = ft_atoi(temp[0]);
 		arr[b->i][b->j]->x = b->j;
 		arr[b->i][b->j]->y = b->i;
 		arr[b->i][b->j]->z = arr[b->i][b->j]->oz;
-		free(buf[b->j]);
-		++b->j;
+		free(buf[b->j++]);
 	}
 }
 
@@ -84,10 +81,7 @@ t_pix	***fill(t_pix ***arr, int fd, t_buff_i *b, char *file)
 		if (b->i == 0)
 			b->c = rows;
 		else if (b->c != rows)
-		{
-			fprintf(stderr, "In %s row: %i, col: %i\n", file, b->j, b->i);
-			exit(-1);
-		}
+			ft_exit(file, b->i, b->j);
 		arr[b->i] = (t_pix **)malloc(sizeof(t_pix *) * (rows + 1));
 		arr[b->i][rows] = NULL;
 		put(arr, buf, b, file);
@@ -95,7 +89,8 @@ t_pix	***fill(t_pix ***arr, int fd, t_buff_i *b, char *file)
 		++b->i;
 	}
 	close(fd);
-	return (del(arr, line));
+	free(line);
+	return (arr);
 }
 
 t_pix	***parse(char *file)
