@@ -13,11 +13,13 @@
 #ifndef MAIN_H
 # define MAIN_H
 # define FACTOR 3.9015625
+# include <fcntl.h>
 # include <mlx.h>
 # include <math.h>
+# include <stdio.h>
 # include <unistd.h>
-# include "main.h"
 # include "libft/libft.h"
+# include "main.h"
 
 typedef struct	s_point
 {

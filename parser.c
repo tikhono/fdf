@@ -10,15 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <unistd.h>
 #include "main.h"
-
-t_pix	***ret(t_pix ***arr, char *line)
-{
-	free(line);
-	return (arr);
-}
 
 void	del(char **arr)
 {
@@ -55,36 +47,26 @@ int		number_of_rows(int fd)
 	return (res);
 }
 
-int		put(t_pix ***arr, char **temp, int i, int j)
+void	put(t_pix ***arr, char **temp, int i, int j)
 {
-	if (ft_num_of_rows(temp) <= 2)
+	if (ft_num_of_rows(temp) > 2 || !ft_isnum(temp[0], 10))
 	{
-		if (!ft_isnum(temp[0], 10))
-		{
-			del(temp);
-			return (1);
-		}
-		arr[i][j] = (t_pix *)malloc(sizeof(t_pix));
-		arr[i][j]->oz = ft_atoi(temp[0]);
-		arr[i][j]->x = j;
-		arr[i][j]->y = i;
-		arr[i][j]->z = arr[i][j]->oz;
-		if (temp[1] != NULL)
-		{
-			if ((!ft_isnum(temp[1], 16)) || temp[1][0] != '\0' || (ft_strlen(temp[1]) >= 10))
-			{
-				del(temp);
-				return (1);
-			}
-		}
+		fprintf(stderr, "Invalid map in row: %i\tand col: %i\t\n", j, i);
+		exit(-1);
 	}
-	else
-	{
-		del(temp);
-		return (1);
-	}
+	if (temp[1] != NULL)
+		if ((!ft_isnum(temp[1], 16)) || temp[1][0] != '\0' || \
+		(ft_strlen(temp[1]) >= 10))
+		{
+			fprintf(stderr, "Invalid map in row: %i\tand col: %i\t\n", j, i);
+			exit(-1);
+		}
+	arr[i][j] = (t_pix *) malloc(sizeof(t_pix));
+	arr[i][j]->oz = ft_atoi(temp[0]);
+	arr[i][j]->x = j;
+	arr[i][j]->y = i;
+	arr[i][j]->z = arr[i][j]->oz;
 	del(temp);
-	return (0);
 }
 
 t_pix	***fill(t_pix ***arr, int fd, t_buff_i *b, int c)
@@ -92,9 +74,7 @@ t_pix	***fill(t_pix ***arr, int fd, t_buff_i *b, int c)
 	char	*line;
 	char	**buf;
 	int		rows;
-	int 	flag;
 
-	flag = 0;
 	while (get_next_line(fd, &line))
 	{
 		buf = ft_strsplit(line, ' ');
@@ -106,21 +86,16 @@ t_pix	***fill(t_pix ***arr, int fd, t_buff_i *b, int c)
 		arr[b->i][rows] = NULL;
 		while (buf[b->j] != NULL)
 		{
-			if (put(arr, ft_strsplit(buf[b->j], ','), b->i, b->j) || c != rows)
-				flag = 1;
+			put(arr, ft_strsplit(buf[b->j], ','), b->i, b->j);
 			free(buf[b->j]);
 			++b->j;
 		}
 		free(buf);
 		++b->i;
-		if (flag == 1)
-		{
-			free(line);
-			return (NULL);
-		}
 	}
 	close(fd);
-	return (ret(arr, line));
+	free(line);
+	return (arr);
 }
 
 t_pix	***parse(char *file)
@@ -137,7 +112,7 @@ t_pix	***parse(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0 || rows <= 0)
 		return (0);
-	arr = (t_pix ***)malloc(sizeof(t_pix **) * (rows + 1));
+	arr = (t_pix ***) malloc(sizeof(t_pix **) * (rows + 1));
 	arr[rows] = NULL;
 	b.i = 0;
 	b.j = 0;

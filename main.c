@@ -59,19 +59,12 @@ int		main(int ac, char **av)
 		else
 			break ;
 	--ac;
-	if ((arr = parse(av[ac])))
-	{
-		initialise(&ptr, arr, ac);
-		put_help(ptr);
-		put_map(ptr);
-		mlx_hook(ptr.win, 2, 5, call_hookers, &ptr);
-		mlx_hook(ptr.win, 17, 1L << 17, exit_mouse, &ptr);
-		mlx_loop(ptr.mlx);
-	}
-	else
-	{
-		ft_putstr("Invalid map");
-		system("leaks fdf");
-	}
+	(arr = parse(av[ac]));
+	initialise(&ptr, arr, ac);
+	put_help(ptr);
+	put_map(ptr);
+	mlx_hook(ptr.win, 2, 5, call_hookers, &ptr);
+	mlx_hook(ptr.win, 17, 1L << 17, exit_mouse, &ptr);
+	mlx_loop(ptr.mlx);
 	return (0);
 }
