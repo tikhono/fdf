@@ -12,19 +12,6 @@
 
 #include "main.h"
 
-void	del(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-	{
-		free(arr[i]);
-		++i;
-	}
-	free(arr);
-}
-
 int		number_of_rows(int fd)
 {
 	int		res;
@@ -47,26 +34,34 @@ int		number_of_rows(int fd)
 	return (res);
 }
 
-void	put(t_pix ***arr, char **temp, int i, int j)
+void	put(t_pix ***arr, char **buf, t_buff_i *b)
 {
-	if (ft_num_of_rows(temp) > 2 || !ft_isnum(temp[0], 10))
+	char 	**temp;
+
+	temp = ft_strsplit(buf[b->j], ',');
+	while (buf[b->j] != NULL)
 	{
-		fprintf(stderr, "Invalid map in row: %i\tand col: %i\t\n", j, i);
-		exit(-1);
-	}
-	if (temp[1] != NULL)
-		if ((!ft_isnum(temp[1], 16)) || temp[1][0] != '\0' || \
-		(ft_strlen(temp[1]) >= 10))
+		if (ft_num_of_rows(buf) > 2 || !ft_isnum(buf[0], 10))
 		{
-			fprintf(stderr, "Invalid map in row: %i\tand col: %i\t\n", j, i);
+			fprintf(stderr, "Invalid map in row: %i\tand col: %i\t\n", b->j,b-> i);
 			exit(-1);
 		}
-	arr[i][j] = (t_pix *)malloc(sizeof(t_pix));
-	arr[i][j]->oz = ft_atoi(temp[0]);
-	arr[i][j]->x = j;
-	arr[i][j]->y = i;
-	arr[i][j]->z = arr[i][j]->oz;
-	del(temp);
+		if (buf[1] != NULL)
+			if ((!ft_isnum(buf[1], 16)) || buf[1][0] != '\0' || \
+			(ft_strlen(buf[1]) >= 10))
+			{
+				fprintf(stderr, "Invalid map in row: %i\tand col: %i\t\n",b->j,b-> i);
+				exit(-1);
+			}
+		arr[b->i][b->j] = (t_pix *)malloc(sizeof(t_pix));
+		arr[b->i][b->j]->oz = ft_atoi(buf[0]);
+		arr[b->i][b->j]->x = b->j;
+		arr[b->i][b->j]->y = b->i;
+		arr[b->i][b->j]->z = arr[b->i][b->j]->oz;
+		free(buf[b->j]);
+		++b->j;
+	}
+	free(buf);
 }
 
 t_pix	***fill(t_pix ***arr, int fd, t_buff_i *b, int c)
@@ -84,13 +79,7 @@ t_pix	***fill(t_pix ***arr, int fd, t_buff_i *b, int c)
 		c = (b->i == 0 ? rows : c);
 		arr[b->i] = (t_pix **)malloc(sizeof(t_pix *) * (rows + 1));
 		arr[b->i][rows] = NULL;
-		while (buf[b->j] != NULL)
-		{
-			put(arr, ft_strsplit(buf[b->j], ','), b->i, b->j);
-			free(buf[b->j]);
-			++b->j;
-		}
-		free(buf);
+		put(arr, buf, b);
 		++b->i;
 	}
 	close(fd);
@@ -112,14 +101,12 @@ t_pix	***parse(char *file)
 		exit(-1);
 	}
 	rows = number_of_rows(fd);
-	if (rows == -1)
+	if (rows <= 0)
 	{
-		fprintf(stderr, "Fail to read: %s\n", file);
+		fprintf(stderr, "Fail to read map from: %s\n", file);
 		exit(-1);
 	}
 	fd = open(file, O_RDONLY);
-	if (fd < 0 || rows <= 0)
-		return (0);
 	arr = (t_pix ***)malloc(sizeof(t_pix **) * (rows + 1));
 	arr[rows] = NULL;
 	b.i = 0;
