@@ -33,6 +33,7 @@ typedef struct	s_buff_i
 {
 	int			i;
 	int			j;
+	int			c;
 }				t_buff_i;
 
 typedef struct	s_buff
