@@ -6,7 +6,7 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 15:56:24 by atikhono          #+#    #+#             */
-/*   Updated: 2018/05/14 16:15:12 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/05/15 16:32:43 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int		exit_mouse(void)
 {
 	exit(0);
+	return (0);
 }
 
 void	put_help(t_mlx p)

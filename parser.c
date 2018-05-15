@@ -6,7 +6,7 @@
 /*   By: atikhono <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 17:57:48 by atikhono          #+#    #+#             */
-/*   Updated: 2018/05/14 16:28:47 by atikhono         ###   ########.fr       */
+/*   Updated: 2018/05/15 16:34:37 by atikhono         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,16 @@ t_pix	***parse(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		return (0);
+	{
+		fprintf(stderr, "Fail to open: %s\n", file);
+		exit(-1);
+	}
 	rows = number_of_rows(fd);
+	if (rows == -1)
+	{
+		fprintf(stderr, "Fail to read: %s\n", file);
+		exit(-1);
+	}
 	fd = open(file, O_RDONLY);
 	if (fd < 0 || rows <= 0)
 		return (0);
