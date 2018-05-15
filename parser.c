@@ -61,7 +61,7 @@ void	put(t_pix ***arr, char **temp, int i, int j)
 			fprintf(stderr, "Invalid map in row: %i\tand col: %i\t\n", j, i);
 			exit(-1);
 		}
-	arr[i][j] = (t_pix *) malloc(sizeof(t_pix));
+	arr[i][j] = (t_pix *)malloc(sizeof(t_pix));
 	arr[i][j]->oz = ft_atoi(temp[0]);
 	arr[i][j]->x = j;
 	arr[i][j]->y = i;
@@ -112,7 +112,7 @@ t_pix	***parse(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0 || rows <= 0)
 		return (0);
-	arr = (t_pix ***) malloc(sizeof(t_pix **) * (rows + 1));
+	arr = (t_pix ***)malloc(sizeof(t_pix **) * (rows + 1));
 	arr[rows] = NULL;
 	b.i = 0;
 	b.j = 0;
