@@ -62,22 +62,6 @@ int		main(int ac, char **av)
 	--ac;
 	(arr = parse(av[ac]));
 	initialise(&ptr, arr, ac);
-
-	int		i;
-	int		j;
-	i = 0;
-	while (arr[i + 1] != NULL)
-	{
-		j = 0;
-		while (arr[i][j] != NULL)
-		{
-			printf("%lf  ", arr[i][j]->oz);
-			++j;
-		}
-		printf("\n");
-		++i;
-	}
-
 	put_help(ptr);
 	put_map(ptr);
 	mlx_hook(ptr.win, 2, 5, call_hookers, &ptr);

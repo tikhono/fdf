@@ -24,18 +24,13 @@ int		number_of_rows(int fd)
 {
 	int		res;
 	char	*line;
-	ssize_t	end;
 
 	res = 0;
-	end = 1;
-	line = (char *)malloc(sizeof(char *) * 256);
-	while (end != 0)
+	while (get_next_line(fd, &line))
 	{
-		end = read(fd, line, 256);
-		if (end == -1)
-			return (-1);
-		line[end] = '\0';
-		res += ft_count_chars(line, "\n");
+		if (line[0] != '\0')
+			++res;
+		free(line);
 	}
 	free(line);
 	close(fd);
