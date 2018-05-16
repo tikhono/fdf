@@ -83,6 +83,8 @@ t_pix	***fill(t_pix ***arr, int fd, t_buff_i *b, char *file)
 		free(buf);
 		++b->i;
 	}
+	if (arr[0][1] == NULL && arr[1] == NULL)
+		ft_exit(file, 0, 0);
 	close(fd);
 	free(line);
 	return (arr);
@@ -98,13 +100,13 @@ t_pix	***parse(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 	{
-		fprintf(stderr, "Fail to open: %s\n", file);
+		fprintf(stderr, "Failed to open: %s\n", file);
 		exit(-1);
 	}
 	rows = number_of_rows(fd);
 	if (rows <= 0)
 	{
-		fprintf(stderr, "Fail to read map from: %s\n", file);
+		fprintf(stderr, "Failed to read map from: %s\n", file);
 		exit(-1);
 	}
 	fd = open(file, O_RDONLY);
