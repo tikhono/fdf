@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <math.h>
-#include <mlx.h>
 #include "main.h"
 
 void	put_pixel(int x, int y, double c, t_mlx ptr)
