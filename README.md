@@ -1,2 +1,2 @@
 # fdf
-![](cut_fdf)
+![](fdf.gif)
